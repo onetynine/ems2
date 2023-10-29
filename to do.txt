@@ -1,0 +1,16 @@
+23/10
+- modify or send back to editprofile page does not work (editprofile_confirm.php) // done 26/10
+- to do registration.php (done frontend halfway)
+- to add tooltips before deployment
+- to change default table view of user (dashboard) - use datatable
+- to change the looks for Edit Confirmation page
+
+26/10
+- to add frontend confirm changes, progress bar, lock submit button if not compelted
+- to complete backend for registration
+- part 1,2 slightly different with part 3,4, probably missing divs
+
+29/10
+- add sidebar for modules (eg staff info, payroll etc)
+- use datatable library for search/filter/sort/export at index.php
+- password hashing/verify
