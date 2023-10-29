@@ -49,7 +49,7 @@ if (isset($_GET['email'])) {
     exit();
 }
 
-?>
+?>hi
 
 <div class="container mt-4">
     <div class="card-body text-center mx-auto">
@@ -59,7 +59,7 @@ if (isset($_GET['email'])) {
     $imageUrl = "https://picsum.photos/id/{$randomImageId}/100/100"; // Adjust the size as needed
     ?>
     <img src="<?php echo $imageUrl; ?>" alt="Random Profile Photo" class="rounded-circle">
-    hi
+    
     
     <h4 class="font-weight-bold"><br><?php echo strtoupper($user['name']); ?></h4>
     <p class="text-uppercase font-size-smaller"><?php echo strtoupper($user['designation']); ?> | EMS Demo</p>
