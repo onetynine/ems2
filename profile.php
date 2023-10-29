@@ -49,7 +49,7 @@ if (isset($_GET['email'])) {
     exit();
 }
 
-?>hi
+?>
 
 <div class="container mt-4">
     <div class="card-body text-center mx-auto">
