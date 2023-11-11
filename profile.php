@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+
 require 'conn.php';
 
 
@@ -50,23 +50,21 @@ if (isset($_GET['email'])) {
 }
 
 ?>
+<div class="container mx-auto">
+    <div class="row">
+    <div class="col-md-3">
+       <?php include "header.php"; ?>
+    </div>
+   
+    <div class="col-md-8 pt-4 mt-5 text-center mx-auto">
+    <div class="card align-items-center">
+    <img src="assets/profile.jpeg" class="rounded-circle mt-3" style="width: 100px;" alt="...">
+    <span><h4 class="font-weight-bold"><br><?php echo strtoupper($user['name']); ?> </h4>
+    <p class="text-uppercase font-size-smaller"><?php echo strtoupper($user['designation']); ?> | EMS Demo   <span class="badge bg-success-subtle text-success-emphasis rounded-pill">Online</span> </p>
+    </div>
 
-<div class="container mt-4">
-    <div class="card-body text-center mx-auto">
-    <!-- Random profile photo from Lorem Picsum -->
-    <?php
-    $randomImageId = rand(1, 1000); // Change the range based on the available images
-    $imageUrl = "https://picsum.photos/id/{$randomImageId}/100/100"; // Adjust the size as needed
-    ?>
-    <img src="<?php echo $imageUrl; ?>" alt="Random Profile Photo" class="rounded-circle">
-    
-    
-    <h4 class="font-weight-bold"><br><?php echo strtoupper($user['name']); ?></h4>
-    <p class="text-uppercase font-size-smaller"><?php echo strtoupper($user['designation']); ?> | EMS Demo</p>
-
-        <!-- Icons and Links -->
         <div class="mt-3">
-        <!-- Email -->
+
         <a href="mailto:<?php echo $user['email']; ?>" class="btn btn-link" title="Email">
             <i class="far fa-envelope"></i>
         </a>
@@ -85,11 +83,19 @@ if (isset($_GET['email'])) {
         <a href="<?php echo $user['facebook']; ?>" class="btn btn-link" target="_blank" title="Facebook">
             <i class="fab fa-facebook"></i>
         </a>
-</div>
+
 
 </div>
+<div class="container text-center">
+  <div class="row row-cols-4">
+    <button href="editprofile.php?email=<?php echo $user['email']; ?>" class="btn btn-dark border rounded-0 p-2">Edit</button>
+    <button class="btn btn-dark border rounded-0">Leave</button>
+    <button class="btn btn-dark border rounded-0">Performance</button>
+    <button class="btn btn-dark border rounded-0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">Print</button>
+  </div>
+</div>
 
-        <ul class="nav justify-content-end">
+        <!-- <ul class="nav">
         <li class="nav-item">
         <a class="nav-link" href="editprofile.php?email=<?php echo $user['email']; ?>">
         <i class="fas fa-edit"></i> Edit
@@ -104,16 +110,57 @@ if (isset($_GET['email'])) {
             <li class="nav-item">
                 <a class="nav-link" href="#"><i class="fas fa-chart-line"></i> KPI</a>
             </li>
-        </ul>
+        </ul> -->
+        
+        <div class="card mt-4 ">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="true" href="#">Personal Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Employment Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" >Social Media Info</a>
+      </li>
+    </ul>
+  </div>
 
+  <div class="card-body text-start">
+    <div class="row">
+        <div class="col-md-6">
+            <h6 class="card-title">Name</h6>
+                <p class="card-text"><?php echo $user['name']; ?></p>
+            <h6 class="card-title">Phone</h6>
+                <p class="card-text"><?php echo $user['phone']; ?></p>
+            <h6 class="card-title">Email</h6>
+                <p class="card-text"><?php echo $user['email']; ?></p>
+            <h6 class="card-title">Name</h6>
+                <p class="card-text"><?php echo $user['name']; ?></p>
+        </div>
+        <div class="col-md-6">
+            <h6 class="card-title">Name</h6>
+                <p class="card-text"><?php echo $user['name']; ?></p>
+            <h6 class="card-title">Phone</h6>
+                <p class="card-text"><?php echo $user['phone']; ?></p>
+            <h6 class="card-title">Email</h6>
+                <p class="card-text"><?php echo $user['email']; ?></p>
+            <h6 class="card-title">Name</h6>
+                <p class="card-text"><?php echo $user['name']; ?></p>
+        </div>
+    </div>
+</div>
+</div>
 
+<!-- 
 <div class="card mt-4">
     <div class="card-header">
-        <h3>Personal Info</h3>
+        <h5>Personal Info</h5>
     </div>
     <div class="card-body">
         <div class="row">
-            <!-- Left Column -->
+
             <div class="col-md-6">
                 <p>Name: <?php echo $user['name']; ?></p>
                 
@@ -121,30 +168,30 @@ if (isset($_GET['email'])) {
                 <p>Email: <?php echo $user['email']; ?></p>
             </div>
 
-            <!-- Right Column -->
+
             <div class="col-md-6">
                 <p>NRIC: <?php echo $user['nric']; ?></p>
                 <p>Address: <?php echo $user['address']; ?></p>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Employment Info Section -->
-<div class="card mt-4">
+<!-- <div class="card mt-4">
     <div class="card-header">
-        <h3>Employment Info</h3>
+        <h6>Employment Info</h6>
     </div>
     <div class="card-body">
         <div class="row">
-            <!-- Left Column -->
+
             <div class="col-md-6">
             <p>Start Date: <?php echo $user['startdate']; ?></p>
             <p>End Date: <?php echo $user['enddate']; ?></p>
             <p>Status: <?php echo $user['status']; ?></p>
             </div>
 
-            <!-- Right Column -->
+
             <div class="col-md-6">
             <p>Designation: <?php echo $user['designation']; ?></p>
                 <p>Department: <?php echo $user['department']; ?></p>
@@ -152,8 +199,9 @@ if (isset($_GET['email'])) {
             </div>
         </div>
     </div>
+</div> -->
 </div>
-
-  
-
-    
+</div>
+<?php
+include "footer.php";
+?>

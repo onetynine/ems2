@@ -14,3 +14,7 @@
 - add sidebar for modules (eg staff info, payroll etc)
 - use datatable library for search/filter/sort/export at index.php
 - password hashing/verify
+- 
+
+9/11
+- restyle all pages to fit current style (basic bootstrap)

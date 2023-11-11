@@ -1,0 +1,21 @@
+.parent{
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.child1{
+    width: 100px;
+    height: 100px;
+    background-color: tomato;
+}
+
+.child2{
+    width: 100px;
+    height: 100px;
+    background-color: yellowgreen;
+}
+
+.container{
+    margin-left: 0px;
+}
