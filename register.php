@@ -1,9 +1,13 @@
 <?php
-include "header.php";
 require 'conn.php';
 ?>
 
-<div class="container mt-5">
+<div class="container mx-auto">
+    <div class="row">
+    <div class="col-md-3">
+       <?php include "header.php"; ?>
+    </div>
+    <div class="col-md-8 pt-4 mt-5 text-center mx-auto">
 <h2>Registration</h2>
 <form action="register_process.php" method="post">
 
@@ -21,11 +25,10 @@ require 'conn.php';
         </div>
 
     </div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+        </div>
             
             <div class="form-group">
                 <label for="nric">NRIC:</label>
@@ -166,8 +169,8 @@ require 'conn.php';
     </div>
 
 </form>
-</div>
-
+</div></div>
+<?php include "footer.php"; ?>
 <script>
         let currentStep = 1;
         const steps = document.querySelectorAll('.step');
