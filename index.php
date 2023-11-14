@@ -28,9 +28,9 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="content ">       
     <span class="nav-brand">User Information</span>
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped ">
-            <thead class="">
+    <div class="table">
+        <table id="info" class="table table-hover" style="width: 100%">
+            <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
@@ -76,3 +76,15 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     margin-right: 12px;
 }
 </style>
+
+<script>
+    $(document).ready( function () {
+        $('#info').DataTable({
+            "pagingType": "full_numbers", // Add any additional options you need
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json" // You can change the language file as needed
+            },
+            "dom": '<"top"fB>rt<"bottom"lip><"clear">' // This controls the placement of DataTable elements
+        });
+    });
+</script>

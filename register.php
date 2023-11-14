@@ -12,54 +12,55 @@ require 'conn.php';
 <form action="register_process.php" method="post">
 
     <!-- Personal Info Section -->
-    <div class="step" id="step1">
-        <div class="col text-right">
-                <button id="" class="next-button" onclick="nextStep(1)">Next <i class="fas fa-chevron-right"></i></button>
 
-            </div>
-    <div class="card mt-4 ">
   
-        <div class="card-header d-flex ">
-        <div class="col text-center">
-            <h3>Personal Info</h3>
+      
+        <div class="text-start">
+            <h4>Personal Info</h4>
+            <span> Please fill up staff information correctly. </span><br>
         </div>
 
-    </div>
+    <br>
+    <div class="tab">
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="text" oninput="this.className = ''" class="form-control" id="floatingInput" placeholder="name" name="name">
+            <label for="floatingInput">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" oninput="this.className = ''" class="form-control" id="floatingInput" placeholder="name@example.com" name="nric">
+            <label for="floatingInput">NRIC</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" oninput="this.className = ''" class="form-control" id="floatingInput" placeholder="phone" name="phone">
+            <label for="floatingInput">Phone</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" oninput="this.className = ''" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
             <label for="floatingInput">Email address</label>
         </div>
-            
-            <div class="form-group">
-                <label for="nric">NRIC:</label>
-                <input type="text" class="form-control" id="nric" name="nric" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone:</label>
-                <input type="text" class="form-control" id="phone" name="phone" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="address">Address:</label>
-                <textarea class="form-control" id="address" name="address" required></textarea>
+        <div class="form-floating mb-3">
+            <input type="password" oninput="this.className = ''" class="form-control" id="floatingInput" placeholder="password" name="password">
+            <label for="floatingInput">Password</label>
             </div>
         </div>
+        </div>  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+    <!-- Circles which indicates the steps of the form: -->
+    <div style="text-align:center;margin-top:40px; display:block-inline">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
     </div><br>
 </div>
 
     <!-- Employment Info Section -->
-    <div class="step" id="step2">
-            <div class="col text-right">
-                <button class="" onclick="prevStep(2)"><i class="fa-solid fa-arrow-left-long"></i>    Previous</button>
-                <button class="" onclick="nextStep(2)">Next   <i class="fa-solid fa-arrow-right-long"></i></button>
-            </div>
-    <div class="card mt-4">
+    <!-- <div class="card mt-4">
     <div class="card-header d-flex justify-content-between">
     <div class="col text-center">
             <h3>Employment Info</h3>
@@ -99,15 +100,10 @@ require 'conn.php';
         </div>
     </div><br>
 
-    </div>
+    </div> -->
 
 <!-- Social Media Info Section -->
-<div class="step" id="step3">
-<div class="col text-right">
-                <button class="" onclick="prevStep(3)"><i class="fa-solid fa-arrow-left-long"></i>    Previous</button>
-                <button class="" onclick="nextStep(3)">Next   <i class="fa-solid fa-arrow-right-long"></i></button>
-            </div>
-    <div class="card mt-4">
+    <!-- <div class="card mt-4">
         <div class="card-header d-flex justify-content-between">
         <div class="col text-center">
             <h3>Social Media Info</h3>
@@ -136,16 +132,11 @@ require 'conn.php';
         </div>
     </div>
 </div>
-
+ -->
 
 
     <!-- Miscellaneous Section -->
-    <div class="step" id="step4">
-        <div class="col text-right">
-                <button class="" onclick="prevStep(4)"><i class="fa-solid fa-arrow-left-long"></i>    Previous</button>
-                <input id="submitButton" type="submit" value="Submit">
-        </div>
-    <div class="card mt-4">
+    <!-- <div class="card mt-4">
     <div class="card-header d-flex justify-content-between">
     <div class="col text-center">
             <h3>Misc Info</h3>
@@ -166,37 +157,83 @@ require 'conn.php';
         </div>
 
         </div>
-    </div>
+    </div> -->
 
 </form>
-</div></div>
+</div></div></div>
 <?php include "footer.php"; ?>
-<script>
-        let currentStep = 1;
-        const steps = document.querySelectorAll('.step');
-
-        function showStep(step) {
-            for (const s of steps) {
-                s.style.display = 'none';
-            }
-            steps[step - 1].style.display = 'block';
-        }
-
-        function nextStep(step) {
-            if (step < steps.length) {
-                currentStep = step + 1;
-                showStep(currentStep);
-            }
-        }
-
-        function prevStep(step) {
-            if (step > 1) {
-                currentStep = step - 1;
-                showStep(currentStep);
-            }
-        }
-
-        showStep(currentStep);
-    </script>
 
 
+
+<script>var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}</script>

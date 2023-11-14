@@ -201,7 +201,7 @@ if (isset($_GET['email'])) {
     </div>
 </div> -->
 </div>
-</div>
+</div></div>
 <?php
 include "footer.php";
 ?>

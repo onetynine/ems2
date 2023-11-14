@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+
 require 'conn.php';
 
 if (isset($_GET['email'])) {
@@ -36,7 +36,11 @@ if (isset($_GET['email'])) {
 
 
 
-<div class="container mt-4">
+<div class="container mx-auto">
+<div class="row">
+    <div class="col-md-3">
+        <?php include "header.php"; ?>
+
     <h2>Edit Profile</h2>
     <form action="editprofile_confirm.php" method="post" id="">
     <!-- Flex container for tabs and button -->
@@ -213,6 +217,6 @@ if (isset($_GET['email'])) {
         </div>
     </div>
     </form>
-</div>
+</div></div></div>
 
 <?php include "footer.php"; ?>
