@@ -24,10 +24,14 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 </style>
 
-<div class="col-md-8 pt-4 mt-5 text-center mx-auto">
-    <div class="content ">       
-    <span class="nav-brand">User Information</span>
-
+<div class="col-md-8 pt-4 mt-5 mx-auto">
+      
+    <h3>Dashboard</h3><hr>
+    <div class="text-start">
+            <h5>Employee</h5>
+            <span> Displays employee information in table form. Search, filter and edit individually. </span>
+            <br>
+        </div>
     <div class="table">
         <table id="info" class="table table-hover" style="width: 100%">
             <thead>

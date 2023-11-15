@@ -7,55 +7,194 @@ require 'conn.php';
     <div class="col-md-3">
        <?php include "header.php"; ?>
     </div>
-    <div class="col-md-8 pt-4 mt-5 text-center mx-auto">
-<h2>Registration</h2>
+    <div class="col-md-8 pt-4 mt-5 mx-auto">
+        
+<h3>Registration</h3><hr>
 <form action="register_process.php" method="post">
 
-    <!-- Personal Info Section -->
+<!-- 
+Multi step registration js  is based on 
+https://codepen.io/aniket/pen/WxByVp 
+-->
+<style>
+    .stepwizard-row {
+      display: table-row;
+  }
 
-  
-      
-        <div class="text-start">
-            <h4>Personal Info</h4>
-            <span> Please fill up staff information correctly. </span><br>
-        </div>
+  .stepwizard {
+      display: table;
+      width: 100%;
+      position: relative;
+  }
 
+  .stepwizard-step button[disabled] {
+      opacity: 1 !important;
+      filter: alpha(opacity=50) !important;
+  }
+
+  .stepwizard-row:before {
+      top: 14px;
+      bottom: 0;
+      position: absolute;
+      content: " ";
+      width: 100%;
+      height: 1px;
+      background-color: #ccc;
+      z-order: 0;
+
+  }
+
+  .stepwizard-step {
+      display: table-cell;
+      text-align: center;
+      position: relative;
+  }
+
+  .btn-circle: {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+
+    .btn-circle:hover {
+
+    }
+  }
+</style>
+
+<!-- Personal Info Section --> 
+<section class="text-start row setup-content" id="step-1">
+    <h5>Personal Info</h5>
+    <span> Please fill up staff information correctly. </span><br>
+
+    <br>
+<div class="tab">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" placeholder="name" name="name">
+        <label for="floatingInput">Name</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="nric">
+        <label for="floatingInput">NRIC</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" placeholder="phone" name="phone">
+        <label for="floatingInput">Phone</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+        <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="floatingInput" placeholder="password" name="password">
+        <label for="floatingInput">Password</label>
+    </div>
+</div>     
+    <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+</section>
+    <!-- Employment Info Section --> 
+    <section class="text-start row setup-content" id="step-2">
+        <h5>Employment Info</h5>
+        <span> Please fill up staff information correctly. </span><br>
+   
     <br>
     <div class="tab">
         <div class="form-floating mb-3">
-            <input type="text" oninput="this.className = ''" class="form-control" id="floatingInput" placeholder="name" name="name">
-            <label for="floatingInput">Name</label>
+            <input type="text" class="form-control" id="floatingInput" placeholder="designation" name="designation">
+            <label for="floatingInput">Designation</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" oninput="this.className = ''" class="form-control" id="floatingInput" placeholder="name@example.com" name="nric">
-            <label for="floatingInput">NRIC</label>
+            <input type="email" class="form-control" id="floatingInput" placeholder="department" name="department">
+            <label for="floatingInput">Department</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" oninput="this.className = ''" class="form-control" id="floatingInput" placeholder="phone" name="phone">
-            <label for="floatingInput">Phone</label>
+            <input type="date" class="form-control" id="floatingInput" placeholder="startdate" name="startdate">
+            <label for="floatingInput">startdate</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" oninput="this.className = ''" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
-            <label for="floatingInput">Email address</label>
+            <input type="date" class="form-control" id="floatingInput" placeholder="enddate" name="enddate">
+            <label for="floatingInput">enddate</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" oninput="this.className = ''" class="form-control" id="floatingInput" placeholder="password" name="password">
-            <label for="floatingInput">Password</label>
+            <input type="password" class="form-control" id="floatingInput" placeholder="epfno" name="epfno">
+            <label for="floatingInput">epfno</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="status" name="status">
+            <label for="floatingInput">status</label>
+        </div>
+    
+    <button class="btn btn-default prevBtn btn-lg pull-left" type="button" >Prev</button>
+    <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+</section>
+
+        <!-- Social Media Info Section --> 
+        <section class="text-start row setup-content" id="step-3">
+        <h5>Social Media Info</h5>
+        <span> Fill up the user id (or extension) or the entire url of profile id. </span><br>
+    
+    <br>
+    <div class="tab">
+    <div class="input-group mb-3">
+        <span class="input-group-text"><i class="fa-brands fa-linkedin fa-lg"></i></span>
+            <div class="form-floating form-floating-group flex-grow-1">
+                <input type="text" class="form-control" name="code1" placeholder="Code 1">
+                <label for="code1">LinkedIn Profile URL</label>
             </div>
-        </div>
-        </div>  <div style="overflow:auto;">
-    <div style="float:right;">
-      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
-  </div>
-    <!-- Circles which indicates the steps of the form: -->
-    <div style="text-align:center;margin-top:40px; display:block-inline">
-    <span class="step"></span>
-    <span class="step"></span>
-    <span class="step"></span>
-    <span class="step"></span>
-  </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text"><i class="fa-brands fa-square-facebook fa-lg"></i></span>
+            <div class="form-floating form-floating-group flex-grow-1">
+                <input type="text" class="form-control" name="code1" placeholder="Code 1">
+                <label for="code1">Facebook Profile URL</label>
+            </div>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text"><i class="fa-brands fa-square-github fa-lg"></i></span>
+            <div class="form-floating form-floating-group flex-grow-1">
+                <input type="text" class="form-control" name="github" placeholder="github">
+                <label for="code1">Github Profile URL</label>
+            </div>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text"><i class="fa-brands fa-square-x-twitter fa-lg"></i></span>
+            <div class="form-floating form-floating-group flex-grow-1">
+                <input type="text" class="form-control" name="twitter" placeholder="twitter">
+                <label for="code1">Twitter/X Profile URL</label>
+            </div>
+    </div>  
+            <button class="btn btn-default prevBtn btn-lg pull-left" type="button" >Prev</button>
+            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+
+</section> 
+<section><br>
+<div class="stepwizard-row setup-panel d-flex flex-row align-items-center text-center m-2">
+    <div class="stepwizard-step m-auto">
+        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+        <p>Personal Info</p>
+    </div>
+    <div class="stepwizard-step m-auto">
+        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+        <p>Employment Info</p>
+    </div>
+    <div class="stepwizard-step m-auto">
+        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+        <p>Social Media Info</p>
+    </div>
+    <div class="stepwizard-step m-auto">
+        <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+        <p>Misc.</p>
+    </div>
+    <div class="stepwizard-step m-auto">
+        <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
+        <p>Confirmation</p>
+    </div>
+</div></section>
+
+
     </div><br>
 </div>
 
@@ -163,77 +302,57 @@ require 'conn.php';
 </div></div></div>
 <?php include "footer.php"; ?>
 
+<script>$(document).ready(function () {
 
+var navListItems = $('div.setup-panel div a'),
+        allWells = $('.setup-content'),
+        allNextBtn = $('.nextBtn'),
+        allPrevBtn = $('.prevBtn');
 
-<script>var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
+allWells.hide();
 
-function showTab(n) {
-  // This function will display the specified tab of the form...
-  var x = document.getElementsByClassName("tab");
-  x[n].style.display = "block";
-  //... and fix the Previous/Next buttons:
-  if (n == 0) {
-    document.getElementById("prevBtn").style.display = "none";
-  } else {
-    document.getElementById("prevBtn").style.display = "inline";
-  }
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
-  } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
-  }
-  //... and run a function that will display the correct step indicator:
-  fixStepIndicator(n)
-}
+navListItems.click(function (e) {
+    e.preventDefault();
+    var $target = $($(this).attr('href')),
+            $item = $(this);
 
-function nextPrev(n) {
-  // This function will figure out which tab to display
-  var x = document.getElementsByClassName("tab");
-  // Exit the function if any field in the current tab is invalid:
-  if (n == 1 && !validateForm()) return false;
-  // Hide the current tab:
-  x[currentTab].style.display = "none";
-  // Increase or decrease the current tab by 1:
-  currentTab = currentTab + n;
-  // if you have reached the end of the form...
-  if (currentTab >= x.length) {
-    // ... the form gets submitted:
-    document.getElementById("regForm").submit();
-    return false;
-  }
-  // Otherwise, display the correct tab:
-  showTab(currentTab);
-}
-
-function validateForm() {
-  // This function deals with validation of the form fields
-  var x, y, i, valid = true;
-  x = document.getElementsByClassName("tab");
-  y = x[currentTab].getElementsByTagName("input");
-  // A loop that checks every input field in the current tab:
-  for (i = 0; i < y.length; i++) {
-    // If a field is empty...
-    if (y[i].value == "") {
-      // add an "invalid" class to the field:
-      y[i].className += " invalid";
-      // and set the current valid status to false
-      valid = false;
+    if (!$item.hasClass('disabled')) {
+        navListItems.removeClass('btn-primary').addClass('btn-default');
+        $item.addClass('btn-primary');
+        allWells.hide();
+        $target.show();
+        $target.find('input:eq(0)').focus();
     }
-  }
-  // If the valid status is true, mark the step as finished and valid:
-  if (valid) {
-    document.getElementsByClassName("step")[currentTab].className += " finish";
-  }
-  return valid; // return the valid status
-}
+});
 
-function fixStepIndicator(n) {
-  // This function removes the "active" class of all steps...
-  var i, x = document.getElementsByClassName("step");
-  for (i = 0; i < x.length; i++) {
-    x[i].className = x[i].className.replace(" active", "");
-  }
-  //... and adds the "active" class on the current step:
-  x[n].className += " active";
-}</script>
+allNextBtn.click(function(){
+    var curStep = $(this).closest(".setup-content"),
+        curStepBtn = curStep.attr("id"),
+        nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+        curInputs = curStep.find("input[type='text'],input[type='url']"),
+        isValid = true;
+
+    $(".form-group").removeClass("has-error");
+    for(var i=0; i<curInputs.length; i++){
+        if (!curInputs[i].validity.valid){
+            isValid = false;
+            $(curInputs[i]).closest(".form-group").addClass("has-error");
+        }
+    }
+
+    if (isValid)
+        nextStepWizard.removeAttr('disabled').trigger('click');
+});
+
+allPrevBtn.click(function(){
+    var curStep = $(this).closest(".setup-content"),
+        curStepBtn = curStep.attr("id"),
+        prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
+
+    $(".form-group").removeClass("has-error");
+    prevStepWizard.removeAttr('disabled').trigger('click');
+});
+
+$('div.setup-panel div a.btn-primary').trigger('click');
+});
+</script>
