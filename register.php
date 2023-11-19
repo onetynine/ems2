@@ -7,7 +7,7 @@ require 'conn.php';
     <div class="col-md-3">
        <?php include "header.php"; ?>
     </div>
-    <div class="col-md-8 pt-4 mt-5 mx-auto">
+    <div class="col-md-8  mt-5 mx-auto">
         
 <h3>Registration</h3><hr>
 <form action="register_process.php" method="post">
@@ -65,6 +65,51 @@ https://codepen.io/aniket/pen/WxByVp
   }
 </style>
 
+<br>
+<div class="stepwizard setup-panel d-flex flex-row align-items-center text-center m-2">
+    <div class="stepwizard-step m-auto">
+        <a href="#step-1" type="button" class="btn btn-sm btn-primary btn-circle">1 - Personal Info</a>
+        
+    </div>
+    <div class="stepwizard-step m-auto">
+        <a href="#step-2" type="button" class="btn btn-sm btn-default btn-circle" disabled>2 - Employment Info</a>
+    </div>
+    <div class="stepwizard-step m-auto">
+        <a href="#step-3" type="button" class="btn btn-sm btn-default btn-circle" disabled>3 - Social Media Info</a>
+    </div>
+    <div class="stepwizard-step m-auto">
+        <a href="#step-4" type="button" class="btn btn-sm btn-default btn-circle" disabled>4 - Misc.</a>
+    </div>
+    <div class="stepwizard-step m-auto">
+        <a href="#step-5" type="button" class="btn btn-sm btn-default" disabled>5 - Confirmation</a>
+    </div>
+</div><br>
+
+<?php 
+
+?>
+<div class="progress"  style="height: 2px" role="progressbar" aria-label="Animated striped example" aria-valuenow="00" aria-valuemin="00" aria-valuemax="00" id="progress-bar">
+  <div class="progress-bar progress-bar-striped progress-bar-animated w-100"></div>
+</div><br>
+
+<script>
+  // Function to update the progress bar based on the active step
+  function updateProgressBar() {
+    var totalSteps = 5; // Total number of steps
+    var activeStep = document.querySelector('.stepwizard-step a.btn-primary');
+
+    if (activeStep) {
+      var stepNumber = parseInt(activeStep.textContent.split(' ')[0]);
+      var percentage = (stepNumber / totalSteps) * 100;
+      document.getElementById('progress-bar').style.width = percentage + '%';
+    }
+  }
+
+  // Call the function initially and whenever the step changes
+  updateProgressBar();
+  document.addEventListener('click', updateProgressBar);
+</script>
+
 <!-- Personal Info Section --> 
 <section class="text-start row setup-content" id="step-1">
     <h5>Personal Info</h5>
@@ -92,8 +137,8 @@ https://codepen.io/aniket/pen/WxByVp
         <input type="password" class="form-control" id="floatingInput" placeholder="password" name="password">
         <label for="floatingInput">Password</label>
     </div>
-</div>     
-    <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+    <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+
 </section>
     <!-- Employment Info Section --> 
     <section class="text-start row setup-content" id="step-2">
@@ -127,8 +172,8 @@ https://codepen.io/aniket/pen/WxByVp
             <label for="floatingInput">status</label>
         </div>
     
-    <button class="btn btn-default prevBtn btn-lg pull-left" type="button" >Prev</button>
-    <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+    <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
+    <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
 </section>
 
         <!-- Social Media Info Section --> 
@@ -166,33 +211,12 @@ https://codepen.io/aniket/pen/WxByVp
                 <label for="code1">Twitter/X Profile URL</label>
             </div>
     </div>  
-            <button class="btn btn-default prevBtn btn-lg pull-left" type="button" >Prev</button>
-            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+            <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
+            <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
 
 </section> 
-<section><br>
-<div class="stepwizard-row setup-panel d-flex flex-row align-items-center text-center m-2">
-    <div class="stepwizard-step m-auto">
-        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-        <p>Personal Info</p>
-    </div>
-    <div class="stepwizard-step m-auto">
-        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-        <p>Employment Info</p>
-    </div>
-    <div class="stepwizard-step m-auto">
-        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-        <p>Social Media Info</p>
-    </div>
-    <div class="stepwizard-step m-auto">
-        <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
-        <p>Misc.</p>
-    </div>
-    <div class="stepwizard-step m-auto">
-        <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
-        <p>Confirmation</p>
-    </div>
-</div></section>
+<br>
+
 
 
     </div><br>

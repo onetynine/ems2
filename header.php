@@ -198,7 +198,8 @@ checkLoggedIn();
       <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-5 fw-semibold ">EMS</span>
     </a>
-    <ul class="list-unstyled ps-0">
+
+    <ul class="list-unstyled ps-0 " >
       <li class="mb-1">
         <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
           Dashboard
@@ -251,11 +252,23 @@ checkLoggedIn();
       </li>
     </ul>
   </div>
+  </div>
 
-  
-    </div>
 <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="sidebars.js"></script>
 </html>
 </html>
+<style>
+    /* Add custom styles here if needed */
+
+    @media (max-width: 767px) {
+      .collapse.show {
+        display: block;
+      }
+
+      .btn-toggle {
+        display: block;
+      }
+    }
+  </style>
