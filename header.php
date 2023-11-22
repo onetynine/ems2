@@ -230,8 +230,9 @@ checkLoggedIn();
         </button>
         <div class="collapse show" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Apply</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Approve</a></li>
+            <li><a href="applyleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Apply</a></li>
+            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Approve</a></li>           
+            <li><a href="addleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Add Leave</a></li>
             <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Leave Report</a></li>
           </ul>
         </div>

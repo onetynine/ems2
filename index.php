@@ -84,11 +84,15 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <script>
     $(document).ready( function () {
         $('#info').DataTable({
+            buttons: [
+                'copy', 'excel', 'pdf'
+                     ],
             "pagingType": "full_numbers", // Add any additional options you need
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json" // You can change the language file as needed
-            },
+
             "dom": '<"top"fB>rt<"bottom"lip><"clear">' // This controls the placement of DataTable elements
         });
+        
+
     });
+    
 </script>

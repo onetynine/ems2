@@ -155,13 +155,36 @@ https://codepen.io/aniket/pen/WxByVp
             <input type="email" class="form-control" id="floatingInput" placeholder="department" name="department">
             <label for="floatingInput">Department</label>
         </div>
-        <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="floatingInput" placeholder="startdate" name="startdate">
-            <label for="floatingInput">startdate</label>
+
+        <!-- Same row, two columns. Source: https://getbootstrap.com/docs/5.3/forms/floating-labels/ -->
+        <div class="row g-2"> 
+            <div class="col-md">
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="floatingInput" placeholder="startdate" name="startdate">
+                    <label for="floatingInput">startdate</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="floatingInput" placeholder="enddate" name="enddate">
+                    <label for="floatingInput">enddate</label>
+                </div>
+            </div>
         </div>
-        <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="floatingInput" placeholder="enddate" name="enddate">
-            <label for="floatingInput">enddate</label>
+        <!-- Same row, two columns. Source: https://getbootstrap.com/docs/5.3/forms/floating-labels/ -->
+        <div class="row g-2">
+            <div class="col-md">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Entitled Annual Leave" aria-label="Annual Leave" aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon2">days</span>
+            </div>
+            </div>
+            <div class="col-md">
+                <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Entitled Medical Leave" aria-label="Medical Leave" aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon2">days</span>
+            </div>
+            </div>
         </div>
         <div class="form-floating mb-3">
             <input type="password" class="form-control" id="floatingInput" placeholder="epfno" name="epfno">
@@ -211,6 +234,28 @@ https://codepen.io/aniket/pen/WxByVp
                 <label for="code1">Twitter/X Profile URL</label>
             </div>
     </div>  
+            <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
+            <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
+
+</section> 
+
+
+ <!-- Social Media Info Section --> 
+ <section class="text-start row setup-content" id="step-4">
+        <h5>Misc.</h5>
+        <span>Misc. </span><br>
+    
+    <div class="tab">
+    <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Admin Privileges</label>
+    </div>
+    <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Locked</label>
+    </div>
+
+    
             <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
             <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
 
