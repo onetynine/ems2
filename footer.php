@@ -1,8 +1,9 @@
 
-<div class="container mx-right" style=""><div class=" border-top">
-  <footer class="py-5">
-    <div class="row">
-      <div class="col-6 col-md-2 mb-3 ">
+<div class="container  pt-4 mx-auto">
+  <div class=" border-top"></div>
+  <footer class="py-5" >
+    <div class="row" >
+      <div class="col-6 col-md-2 mb-3">
         <h5>Our Company</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">History</a></li>
@@ -20,9 +21,9 @@
         <p class="text-body-secondary" style="margin:0;">LEVEL 23-1, PREMIER SUITE, </p>
         <p class="text-body-secondary" style="margin:0;">ONE MONT KIARA, NO 1,</p>
         <p class="text-body-secondary" style="margin:0;">JALAN KIARA, MONT KIARA,</p>
-        <p class="text-body-secondary" style="">50480 KUALA LUMPUR.</p>
-        <p class="text-body-secondary" style="">Tel: 60 12-345 6789</p>
-        <p class="text-body-secondary" style="">Email: sales@komputer2u.com</p>
+        <p class="text-body-secondary" >50480 KUALA LUMPUR.</p>
+        <p class="text-body-secondary" >Tel: 60 12-345 6789</p>
+        <p class="text-body-secondary" >Email: sales@komputer2u.com</p>
         </ul>
       </div>
 
@@ -47,5 +48,5 @@
         <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
       </ul>
     </div>
-  </footer>
 </div>
+  </footer>
