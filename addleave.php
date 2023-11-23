@@ -110,11 +110,15 @@ https://codepen.io/aniket/pen/WxByVp
 
 <!-- Personal Info Section --> 
 <section class="text-start row setup-content" id="step-1">
-    <h5>Select Employee</h5>
-    <span> Choose their department and employee name.</span><br>
-
-    <br>
 <div class="tab">
+    <!-- Card Source: https://getbootstrap.com/docs/5.3/components/card/ -->
+    <div class="card" style="width: 100%;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">Leave Info</h5>
+    <p class="card-text">Please contact your HR representative if the leave info is incorrect.</p>
+  </div>
+  <div class="card-body">
     <div class="form mb-3 form-floating">
         <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
             <option selected>General</option>
@@ -139,11 +143,15 @@ https://codepen.io/aniket/pen/WxByVp
 </section>
     <!-- Employment Info Section --> 
     <section class="text-start row setup-content" id="step-2">
-        <h5>Timing</h5>
-        <span> Select starting and ending date for the leave</span><br>
-   
-    <br>
     <div class="tab">
+    <!-- Card Source: https://getbootstrap.com/docs/5.3/components/card/ -->
+    <div class="card" style="width: 100%;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">Leave Info</h5>
+    <p class="card-text">Please contact your HR representative if the leave info is incorrect.</p>
+  </div>
+  <div class="card-body">
 
     <div class="form-floating mb-3">
         <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="Duration" value="1 day">
@@ -166,11 +174,15 @@ https://codepen.io/aniket/pen/WxByVp
 
         <!-- Social Media Info Section --> 
         <section class="text-start row setup-content" id="step-3">
-        <h5>Leave Info</h5>
-        <span> Choose leave type and fill a reason. </span><br>
-    
-    <br>
-    <div class="tab">
+        <div class="tab">
+    <!-- Card Source: https://getbootstrap.com/docs/5.3/components/card/ -->
+    <div class="card" style="width: 100%;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">Leave Info</h5>
+    <p class="card-text">Please contact your HR representative if the leave info is incorrect.</p>
+  </div>
+  <div class="card-body">
     <div class="form mb-3 form-floating">
         <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
             <option selected></option>

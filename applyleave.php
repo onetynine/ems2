@@ -9,8 +9,8 @@ require 'conn.php';
     </div>
     <div class="col-md-8  mt-5 mx-auto">
         
-<h3>Add Leave</h3><hr>
-<form action="addleave_process.php" method="post">
+<h3>Apply Leave</h3><hr>
+<form action="applyleave_process.php" method="post">
 
 <!-- 
 Multi step registration js  is based on 
@@ -68,19 +68,16 @@ https://codepen.io/aniket/pen/WxByVp
 <br>
 <div class="stepwizard setup-panel d-flex flex-row align-items-center text-center m-2">
     <div class="stepwizard-step m-auto">
-        <a href="#step-1" type="button" class="btn btn-sm btn-primary btn-circle">1 - Select Employee</a>
+        <a href="#step-1" type="button" class="btn btn-sm btn-primary btn-circle">1 - Apply</a>
         
     </div>
     <div class="stepwizard-step m-auto">
-        <a href="#step-2" type="button" class="btn btn-sm btn-default btn-circle" disabled>2 - Timing</a>
+        <a href="#step-2" type="button" class="btn btn-sm btn-default btn-circle" disabled>2 - Time and Date</a>
     </div>
     <div class="stepwizard-step m-auto">
-        <a href="#step-3" type="button" class="btn btn-sm btn-default btn-circle" disabled>3 - Info</a>
+        <a href="#step-3" type="button" class="btn btn-sm btn-default btn-circle" disabled>3 - Confirmation</a>
     </div>
-    <div class="stepwizard-step m-auto">
-        <a href="#step-4" type="button" class="btn btn-sm btn-default btn-circle" disabled>4 - Confirmation</a>
 
-    </div>
 </div><br>
 
 <?php 
@@ -93,7 +90,7 @@ https://codepen.io/aniket/pen/WxByVp
 <script>
   // Function to update the progress bar based on the active step
   function updateProgressBar() {
-    var totalSteps = 4; // Total number of steps
+    var totalSteps = 3; // Total number of steps
     var activeStep = document.querySelector('.stepwizard-step a.btn-primary');
 
     if (activeStep) {
@@ -107,17 +104,58 @@ https://codepen.io/aniket/pen/WxByVp
   updateProgressBar();
   document.addEventListener('click', updateProgressBar);
 </script>
-
-<!-- Personal Info Section --> 
+<style>
+    .accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #0d6efd;
+}
+</style>
+<!-- Leave Type & Info --> 
 <section class="text-start row setup-content" id="step-1">
-    <h5>Current Leave Info (taken/remaining) </h5>
-    <span> Annual Leave : 10/12</span><br>
-    <span> Medical Leave : 14/14</span><br>
-    <span> Emergency Leave : 2/0</span><br>
-    
-
-    <br>
 <div class="tab">
+    <!-- Card Source: https://getbootstrap.com/docs/5.3/components/card/ -->
+    <div class="card" style="width: 100%;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">My Leave Info</h5>
+    <p class="card-text">Please contact your HR representative if the leave info is incorrect.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Annual Leave : 1 day remaining out of 14 days</li>
+    <li class="list-group-item">Medical Leave : 1 day remaining out of 14 days</li>
+    <li class="list-group-item">Emergency Leave : 1 day remaining out of 14 days</li>
+  </ul>
+  <div class="card-body">
+    <strong> I would like to apply for: </strong> <br><br>
+  <div class="form mb-3 form-floating">
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option selected></option>
+            <option value="1">Annual Leave</option>
+            <option value="2">Medical Leave</option>
+            <option value="3">Emergency Leave</option>
+        </select>
+        <label for="floatingSelect">Leave Type:</label>
+    </div>
+
+ 
+    <br>
+
+        
+    <button class="btn btn-primary nextBtn pull-right" type="button">Apply</button>
+    </div>
+</div>
+</section>
+    <!-- Employment Info Section --> 
+    <section class="text-start row setup-content" id="step-2"> 
+    <br>
+    <div class="tab">
+            <!-- Card Source: https://getbootstrap.com/docs/5.3/components/card/ -->
+    <div class="card" style="width: 100%;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">Time & Date</h5>
+  </div>
+<div class="card-body">
         <div class="form-floating mb-3">
             <input type="text" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="Duration" value="1 day">
             <label for="floatingPlaintextInput">Duration</label>
@@ -130,73 +168,42 @@ https://codepen.io/aniket/pen/WxByVp
             <input type="date" class="form-control" id="floatingInput" placeholder="enddate" name="enddate">
             <label for="floatingInput">enddate</label>
         </div>
-    <div class="form mb-3 form-floating">
-        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-            <option selected></option>
-            <option value="1">Annual Leave</option>
-            <option value="2">Medical Leave</option>
-            <option value="3">Emergency Leave</option>
-        </select>
-        <label for="floatingSelect">Leave Type:</label>
-    </div>
+
     <div class="form-floating mb-3">
             <textarea class="form-control" id="floatingInput" placeholder="department" name="department" style="height: 100px"></textarea>
             <label for="floatingInput">Give me a reason</label>
     </div>
-    <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
-
-</section>
-    <!-- Employment Info Section --> 
-    <section class="text-start row setup-content" id="step-2">
-        <h5>Timing</h5>
-        <span> Select starting and ending date for the leave</span><br>
-   
-    <br>
-    <div class="tab">
-
-    <div class="form-floating mb-3">
-        <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="Duration" value="1 day">
-        <label for="floatingPlaintextInput">Duration</label>
-    </div>
-
-        <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="floatingInput" placeholder="startdate" name="startdate">
-            <label for="floatingInput">startdate</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="floatingInput" placeholder="enddate" name="enddate">
-            <label for="floatingInput">enddate</label>
-        </div>
-
+    <div class="mb-3">
+  <label for="formFile" class="form-label">Upload Supporting Document</label>
+  <input class="form-control" type="file" id="formFile">
+</div>
         
     <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
     <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
+    </div>
+</div>
 </section>
 
         <!-- Social Media Info Section --> 
-        <section class="text-start row setup-content" id="step-3">
-        <h5>Leave Info</h5>
-        <span> Choose leave type and fill a reason. </span><br>
-    
+        <section class="text-start row setup-content" id="step-3">   
     <br>
     <div class="tab">
-    <div class="form mb-3 form-floating">
-        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-            <option selected></option>
-            <option value="1">Annual Leave</option>
-            <option value="2">Medical Leave</option>
-            <option value="3">Emergency Leave</option>
-        </select>
-        <label for="floatingSelect">Leave Type:</label>
-    </div>
-    <div class="form-floating mb-3">
-            <textarea class="form-control" id="floatingInput" placeholder="department" name="department" style="height: 100px"></textarea>
-            <label for="floatingInput">Give me a reason</label>
-    </div>
-  
+            <!-- Card Source: https://getbootstrap.com/docs/5.3/components/card/ -->
+    <div class="card" style="width: 100%;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">Confirmation</h5>
+    <p class="card-text">
+    Your application is now pending approval. You will receive an email once your leave has been approved.
+ </p>
+ <p class="card-text">
+    You may check your leave status <a href="#">here</a>.
+ </p>
+
             <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
             <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
-
+</div>
+</div>
 </section> 
 <br>
 

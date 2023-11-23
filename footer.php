@@ -1,5 +1,5 @@
 
-<div class="container p-4 mx-auto "><div class=" border-top">
+<div class="container mx-right" style=""><div class=" border-top">
   <footer class="py-5">
     <div class="row">
       <div class="col-6 col-md-2 mb-3 ">

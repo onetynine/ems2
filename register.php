@@ -112,11 +112,15 @@ https://codepen.io/aniket/pen/WxByVp
 
 <!-- Personal Info Section --> 
 <section class="text-start row setup-content" id="step-1">
-    <h5>Personal Info</h5>
-    <span> Please fill up staff information correctly. </span><br>
-
-    <br>
 <div class="tab">
+    <!-- Card Source: https://getbootstrap.com/docs/5.3/components/card/ -->
+    <div class="card" style="width: 100%;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">Personal Info</h5>
+    <p class="card-text">Basic particular</p>
+  </div>
+<div class="card-body">
     <div class="form-floating mb-3">
         <input type="text" class="form-control" id="floatingInput" placeholder="name" name="name">
         <label for="floatingInput">Name</label>
@@ -138,15 +142,19 @@ https://codepen.io/aniket/pen/WxByVp
         <label for="floatingInput">Password</label>
     </div>
     <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
-
+</div></div></div>
 </section>
     <!-- Employment Info Section --> 
     <section class="text-start row setup-content" id="step-2">
-        <h5>Employment Info</h5>
-        <span> Please fill up staff information correctly. </span><br>
-   
-    <br>
     <div class="tab">
+            <!-- Card Source: https://getbootstrap.com/docs/5.3/components/card/ -->
+    <div class="card" style="width: 100%;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">Employment Info</h5>
+    <p class="card-text">Please fill up staff information correctly.</p>
+  </div>
+<div class="card-body">
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="designation" name="designation">
             <label for="floatingInput">Designation</label>
@@ -197,15 +205,22 @@ https://codepen.io/aniket/pen/WxByVp
     
     <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
     <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
+</div>
+</div>
 </section>
 
         <!-- Social Media Info Section --> 
-        <section class="text-start row setup-content" id="step-3">
-        <h5>Social Media Info</h5>
-        <span> Fill up the user id (or extension) or the entire url of profile id. </span><br>
-    
+        <section class="text-start row setup-content" id="step-3">    
     <br>
     <div class="tab">
+            <!-- Card Source: https://getbootstrap.com/docs/5.3/components/card/ -->
+    <div class="card" style="width: 100%;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">Social Media Info</h5>
+    <p class="card-text"> Fill up the user id (or extension) or the entire url of profile id</p>
+  </div>
+<div class="card-body">
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="fa-brands fa-linkedin fa-lg"></i></span>
             <div class="form-floating form-floating-group flex-grow-1">
@@ -242,23 +257,26 @@ https://codepen.io/aniket/pen/WxByVp
 
  <!-- Social Media Info Section --> 
  <section class="text-start row setup-content" id="step-4">
-        <h5>Misc.</h5>
-        <span>Misc. </span><br>
-    
     <div class="tab">
-    <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-    <label class="form-check-label" for="flexSwitchCheckDefault">Admin Privileges</label>
-    </div>
-    <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-    <label class="form-check-label" for="flexSwitchCheckDefault">Locked</label>
-    </div>
-
-    
+    <!-- Card Source: https://getbootstrap.com/docs/5.3/components/card/ -->
+        <div class="card" style="width: 100%;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+                <h5 class="card-title">Misc</h5>
+                <p class="card-text"> Fill up the user id (or extension) or the entire url of profile id</p>
+            </div>
+    <div class="card-body">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Admin Privileges</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Locked</label>
+        </div>    
             <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
             <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
-
+</div></div>
 </section> 
 <br>
 

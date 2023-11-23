@@ -1,5 +1,5 @@
-<?php 
-include 'auth.php';
+<?php
+include "auth.php";
 checkLoggedIn();
 ?>
 
@@ -25,10 +25,10 @@ checkLoggedIn();
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"> -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
-        <!-- Include DataTables Bootstrap 5 JS -->
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
-
+    <!-- Include DataTables Bootstrap 5 JS -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -189,25 +189,32 @@ checkLoggedIn();
     <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
   </symbol>
 </svg>
+<style>
+.sticky
+{
+  position: sticky;
+  overflow: auto;
+  height: 100%;
+}
+</style>
 
 <!-- <main class="d-flex flex-nowrap"> -->
   <h1 class="visually-hidden">Sidebars examples</h1>
-
-  <div class="col flex-shrink-0 p-3 pr-0" style="width: 280px;">
+  <div class=" col flex-shrink-0 p-3 pr-0 " style="width: 280px;" >
     <a href="index.php" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-none">
       <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-5 fw-semibold ">EMS</span>
     </a>
 
-    <ul class="list-unstyled ps-0 " >
+    <ul class="sticky list-unstyled ps-0 ">
       <li class="mb-1">
         <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
           Dashboard
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded active" aria-current="true">Employee</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Leave</a></li>
+            <li><a href="index.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded active" aria-current="true">Employee</a></li>
+            <li><a href="reportleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Leave</a></li>
             <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Memo</a></li>
             <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">KPI</a></li>
           </ul>
@@ -215,12 +222,12 @@ checkLoggedIn();
       </li>
       <li class="mb-1">
         <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
-          Employee
+          Employee 
         </button>
         <div class="collapse show" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
-            <li><a href="register.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Register Employee</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Archive</a></li>
+            <li><a href="register.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Register Employee (admin-only)</a></li>
+            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Archive (admin-only)</a></li>
           </ul>
         </div>
       </li>
@@ -231,16 +238,17 @@ checkLoggedIn();
         <div class="collapse show" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
             <li><a href="applyleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Apply</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Approve</a></li>           
-            <li><a href="addleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Add Leave</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Leave Report</a></li>
+            <li><a href="myleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">My Leave</a></li>
+            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Approve (admin-only)</a></li>           
+            <li><a href="addleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Add Leave (admin-only)</a></li>
+            <li><a href="reportleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Leave Report (admin-only)</a></li>
           </ul>
         </div>
       </li>
       <li class="border-top my-3"></li>
       <li class="mb-1">
         <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          <?php echo $_SESSION['email']; ?>
+          <?php echo $_SESSION["email"]; ?>
         </button>
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
@@ -252,6 +260,7 @@ checkLoggedIn();
         </div>
       </li>
     </ul>
+    
   </div>
   </div>
 
