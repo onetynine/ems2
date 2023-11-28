@@ -5,7 +5,8 @@ checkLoggedIn();
 
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="assets/js/color-modes.js"></script>
+  <head>
+    <script src="assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,18 +19,37 @@ checkLoggedIn();
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d204dd77eb.js" crossorigin="anonymous"></script>
     <link href="style.css" rel="stylesheet">
+
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- Include DataTables CSS and JS files -->
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"> -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+       <!-- DataTables JS -->
+       <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 
-    <!-- Include DataTables Bootstrap 5 JS -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
-    
+      <!-- DataTables SearchPanes JS -->
+      <script src="https://cdn.datatables.net/searchpanes/2.2.0/js/dataTables.searchPanes.min.js"></script>
+
+      <!-- DataTables Select JS -->
+      <script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+      <!-- DataTables SearchPanes CSS
+      <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/2.2.0/css/searchPanes.dataTables.min.css">
+   -->
+      <!-- DataTables SearchPanes CSS -->
+      <link rel="stylesheet" href="searchpanes.css">
+  
+      <!-- DataTables Select CSS -->
+      <link rel="stylesheet" href="https://cdn.datatables.net/select/1.7.0/css/select.dataTables.min.css">
+
+ 
+
     <style>
+      /* Datatable : remove bg on searchpane hover */
+
+
+        /* Bootstrap */
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -83,7 +103,7 @@ checkLoggedIn();
       }
 
       .btn-bd-primary {
-        --bd-violet-bg: #712cf9;
+        --bd-violet-bg: black;
         --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
 
         --bs-btn-font-weight: 600;
@@ -259,6 +279,18 @@ checkLoggedIn();
           </ul>
         </div>
       </li>
+      <li class="mb-1">
+        <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#memo-collapse" aria-expanded="true">
+          Memo
+        </button>
+        <div class="collapse show" id="memo-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
+            <li><a href="viewmemo.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">View Memo</a></li>
+            <li><a href="addmemo.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Add Memo</a></li>
+            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Archived Memo</a></li>           
+          </ul>
+        </div>
+      </li>
       <li class="border-top my-3"></li>
       <li class="mb-1">
         <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
@@ -273,6 +305,7 @@ checkLoggedIn();
           </ul>
         </div>
       </li>
+      
     </ul>
     
   </div>

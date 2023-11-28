@@ -13,6 +13,7 @@ $stmt->execute();
 // Fetch all rows into an associative array
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <div class="container mx-auto">
     <div class="row">
     <div class="col-md-3">
@@ -22,6 +23,9 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     .content{
         margin-top: 35px;
     }
+    html[data-bs-theme="dark"] div.dtsp-panesContainer div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody {
+  background: var(--bs-table-bg) !important;
+}
 </style>
 
 <div class="col-md-8 pt-4 mt-5 mx-auto">
@@ -32,8 +36,8 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <span> Displays employee information in table form. Search, filter and edit individually. </span>
             <br>
         </div>
-    <div class="table">
-        <table id="info" class="table table-hover" style="width: 100%">
+    <div class="table mt-4">
+        <table id="info" class="table table-hover table-responsive" style="width: 100%">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -79,20 +83,40 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     .icon-link i {
     margin-right: 12px;
 }
+
+
 </style>
 
 <script>
-    $(document).ready( function () {
-        $('#info').DataTable({
-            buttons: [
-                'copy', 'excel', 'pdf'
-                     ],
-            "pagingType": "full_numbers", // Add any additional options you need
-
-            "dom": '<"top"fB>rt<"bottom"lip><"clear">' // This controls the placement of DataTable elements
-        });
+$(document).ready(function() {
+    $('#info').DataTable({
+        responsive: true,
+        dom: 'Plfrtip',
         
-
-    });
+        searchPanes: {
+            initCollapsed: true
+        },
+        
+        columnDefs: [
+        {
+            searchPanes: {
+                show: true
+                
+            },
+            targets: [3,4,5]
+        },
+        {
+            searchPanes: {
+                show: false
+            },
+            targets: [0]
+        }
+        
+    ],
     
+    
+            });
+});
 </script>
+
+ 
