@@ -3,9 +3,8 @@
 require "conn.php";
 
 // Directly query the database for user information
-$sql = "SELECT userinfo.*, empinfo.*
-        FROM userinfo
-        LEFT JOIN empinfo ON userinfo.email = empinfo.email";
+$sql = "SELECT *
+        FROM leaveinfo";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
@@ -36,32 +35,26 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <table id="info" class="table table-hover" style="width: 100%">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Designation</th>
-                    <th>Department</th>
+                    <th>#</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Employee</th>
                     <th>Leave Type</th>
-                    <th>Approval Status</th>
-                    <th>Date Start</th>
-                    <th>Date End</th>
-                    <th>Duration</th>
+                    <th>Leave Reason</th>
+                    <th>Approval</th>
+
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($users as $user): ?>
                     <tr>
-                        <td><?php echo $user["id"]; ?></td>
+                        <td><?php echo $user["leaveid"]; ?></td>
+                        <td><?php echo $user["leavestart"]; ?></td>
+                        <td><?php echo $user["leaveend"]; ?></td>
                         <td><?php echo $user["name"]; ?></td>
-                        <td><?php echo $user["phone"]; ?></td>
-                        <td><?php echo $user["email"]; ?></td>
-                        <td><?php echo $user["status"]; ?></td>
-                        <td><?php echo $user["designation"]; ?></td>
-                        <td><?php
-                        echo "<a class='icon-link' title='View User Profile' href='profile.php?email={$user["email"]}'>View<i class='fas fa-eye'></i></a>";
-                        echo "<a class='icon-link' title='View Report' href='reports.php?email={$user["email"]}'><i class='fas fa-chart-bar'></i></a>";
-                        ?></td>
-                        <td>
-                            <input type="checkbox">
-                        </td>
+                        <td><?php echo $user["leavetype"]; ?></td>
+                        <td><?php echo $user["leavereason"]; ?></td>
+                        <td><?php echo $user["leaveapproval"]; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

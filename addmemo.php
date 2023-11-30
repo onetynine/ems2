@@ -9,7 +9,7 @@ require 'conn.php';
     </div>
     <div class="col-md-8  mt-5 mx-auto">
         
-<h3>Add Leave</h3><hr>
+<h3>Add Memo</h3><hr>
 <form action="addmemo_process.php" method="post">
 
 <!-- 
@@ -144,16 +144,23 @@ https://codepen.io/aniket/pen/WxByVp
     <div class="card" style="width: 100%;">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
   <div class="card-body">
-    <h5 class="card-title">Add Memo</h5>
+    <h5 class="card-title">Memo Details</h5>
     <p class="card-text">Please contact your HR representative if the leave info is incorrect.</p>
   </div>
   <div class="card-body">
 
-    <div class="form-floating mb-3">
-        <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="Duration" value="1 day">
-        <label for="floatingPlaintextInput">Duration</label>
-    </div>
-
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="startdate" name="startdate">
+            <label for="floatingInput">Subject</label>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" id="floatingInput" placeholder="startdate" name="startdate" style="height: 200px"></textarea>
+            <label for="floatingInput">Details</label>
+        </div>
+        <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Attachment</label>
+        <input class="form-control" type="file" id="formFileMultiple" multiple>
+        </div>
         <div class="form-floating mb-3">
             <input type="date" class="form-control" id="floatingInput" placeholder="startdate" name="startdate">
             <label for="floatingInput">startdate</label>
@@ -162,8 +169,15 @@ https://codepen.io/aniket/pen/WxByVp
             <input type="date" class="form-control" id="floatingInput" placeholder="enddate" name="enddate">
             <label for="floatingInput">enddate</label>
         </div>
-
-    
+        <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Send notification by email</label>
+        </div>
+        <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+        <label class="form-check-label" for="flexSwitchCheckChecked">Allow Comments</label>
+        </div>
+    <br>
     <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
     <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
 </section>
@@ -179,20 +193,7 @@ https://codepen.io/aniket/pen/WxByVp
     <p class="card-text">Please contact your HR representative if the leave info is incorrect.</p>
   </div>
   <div class="card-body">
-    <div class="form mb-3 form-floating">
-        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-            <option selected></option>
-            <option value="1">Annual Leave</option>
-            <option value="2">Medical Leave</option>
-            <option value="3">Emergency Leave</option>
-        </select>
-        <label for="floatingSelect">Leave Type:</label>
-    </div>
-    <div class="form-floating mb-3">
-            <textarea class="form-control" id="floatingInput" placeholder="department" name="department" style="height: 100px"></textarea>
-            <label for="floatingInput">Give me a reason</label>
-    </div>
-  
+    
             <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
             <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
 

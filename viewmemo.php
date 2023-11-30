@@ -3,9 +3,15 @@
 require "conn.php";
 
 // Directly query the database for user information
+// $sql = "SELECT *
+//         FROM memoinfo
+//         ORDER BY dateposted DESC";
+
 $sql = "SELECT *
-        FROM memoinfo
-        ORDER BY dateposted DESC";
+FROM leaveinfo
+JOIN userinfo ON leaveinfo.leaveid = userinfo.id;
+";
+
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
@@ -54,7 +60,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php foreach ($users as $user): ?>
 
 <div class="card">
-  <h6 class="card-header">Memo #<?php echo $user["memoid"]; ?> / <?php echo $user["dateposted"]; ?>
+  <h6 class="card-header">Memo #<?php echo $user["memoid"]; ?> / <?php echo $user["dateposted"]; ?> <span class="badge text-bg-danger">Urgent</span>
   </h6>
   <div class="card-body">
     <h5 class="card-title"><?php echo $user["memotitle"]; ?></h5>
