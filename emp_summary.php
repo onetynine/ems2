@@ -13,11 +13,9 @@ $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="container mx-auto">
-    <div class="row">
-    <div class="col-md-3">
+
        <?php include "header.php"; ?>
-    </div>
+       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 <style>
     .content{
         margin-top: 35px;
@@ -27,11 +25,10 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 </style>
 
-<div class="col-md-8 pt-4 mt-5 mx-auto">
-      
+      <br>
     <h3>Dashboard</h3><hr>
     <div class="text-start">
-            <h5>Employee</h5>
+            <h5>Employee <a href="emp_detail.php">Detailed View</a></h5>
             <span> Displays employee information in table form. Search, filter and edit individually. </span>
             <br>
         </div>
@@ -43,36 +40,40 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Name</th>
                     <th>Contact</th>
                     <th>Email</th>
-                    <th>Status</th>
                     <th>Designation</th>
                     <th>Department</th>
-                    <th>Start Date</th>                
-                    <th>End Date</th>
+                    <th>Contract Type</th>
+                    <th>Current Tenure</th> 
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($users as $user): ?>
-                    <tr>
+            <?php foreach ($users as $user): ?>
+                <tr>
                     <td><?php echo $user["emp_id"]; ?></td>
                     <td><?php echo $user["emp_name"]; ?></td>
                     <td><?php echo $user["emp_phone"]; ?></td>
                     <td><?php echo $user["emp_email"]; ?></td>
-                    <td><?php echo $user["emp_status"]; ?></td>
                     <td><?php echo $user["emp_designation"]; ?></td>
-                    <td><?php echo $user["emp_department"]; ?></td>
-                    <td><?php echo $user["emp_start_date"]; ?></td>                   
-                    <td><?php echo $user["emp_end_date"]; ?></td>  
-
-                    </tr>
-                <?php endforeach; ?>
+                    <td><?php echo $user["emp_department"]; ?></td>   
+                    <td><?php echo $user["emp_contract_type"]; ?></td> 
+                    <td>
+                        <?php
+                        // Calculate the number of days from emp_start_date to today (chatGPT)
+                        $startDate = new DateTime($user["emp_start_date"]);
+                        $today = new DateTime();
+                        $daysDifference = $startDate->diff($today)->days;
+                        echo $daysDifference . " days";
+                        ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table></div>
                 </div>
     </div>
 </div></div></div>
 
-<?php include "footer.php"; ?>
-
+</main>
 </body>
 </html>
 
@@ -87,6 +88,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <script>
 $(document).ready(function() {
     $('#info').DataTable({
+        scrollX: true,
         responsive: true,
         dom: 'Plfrtip',
         

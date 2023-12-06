@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Compare passwords without hashing (for testing only)
         if ($emp_password === $user['emp_password']) {
             $_SESSION['emp_email'] = $user['emp_email'];
-            header('Location: index.php');
+            header('Location: emp_summary.php');
 
         } else {
             $errors[] = "Invalid password";

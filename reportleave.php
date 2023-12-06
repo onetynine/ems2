@@ -11,7 +11,6 @@ employee.emp_name,
 employee.emp_designation,
 employee.emp_department,
 leave_info.leave_type,
-leave_info.leave_reason,
 leave_info.leave_approval
 FROM
 leave_info
@@ -48,30 +47,24 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <table id="info" class="table table-hover" style="width: 100%">
             <thead>
                 <tr>
-                <th>#</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Employee</th>
                     <th>Designation</th>
                     <th>Department</th>
                     <th>Leave Type</th>
-                    <th>Leave Reason</th>
                     <th>Approval</th>
-
-
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($users as $user): ?>
                     <tr>
-                        <td><?php echo $user["leave_id"]; ?></td>
                         <td><?php echo $user["leave_start_date"]; ?></td>
                         <td><?php echo $user["leave_end_date"]; ?></td>
                         <td><?php echo $user["emp_name"]; ?></td>
                         <td><?php echo $user["emp_designation"]; ?></td>
                         <td><?php echo $user["emp_department"]; ?></td>
                         <td><?php echo $user["leave_type"]; ?></td>
-                        <td><?php echo $user["leave_reason"]; ?></td>
                         <td><?php echo $user["leave_approval"]; ?></td>
                     </tr>
                 <?php endforeach; ?>
