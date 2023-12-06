@@ -3,14 +3,11 @@
 require "conn.php";
 
 // Directly query the database for user information
-// $sql = "SELECT *
-//         FROM memoinfo
-//         ORDER BY dateposted DESC";
-
 $sql = "SELECT *
-FROM leaveinfo
-JOIN userinfo ON leaveinfo.leaveid = userinfo.id;
-";
+        FROM memoinfo
+        ORDER BY dateposted DESC";
+
+
 
 
 $stmt = $pdo->prepare($sql);

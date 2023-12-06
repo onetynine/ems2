@@ -260,8 +260,8 @@ checkLoggedIn();
         </button>
         <div class="collapse show" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
-            <li><a href="register.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Register Employee (admin-only)</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Archive (admin-only)</a></li>
+            <li><a href="register.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New Employee</a></li>
+            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Archive</a></li>
           </ul>
         </div>
       </li>
@@ -271,11 +271,11 @@ checkLoggedIn();
         </button>
         <div class="collapse show" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
-            <li><a href="applyleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Apply</a></li>
-            <li><a href="myleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">My Leave</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Approve (admin-only)</a></li>           
-            <li><a href="addleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Add Leave (admin-only)</a></li>
-            <li><a href="reportleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Leave Report (admin-only)</a></li>
+            <li><a href="applyleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Apply Leave</a></li>
+
+            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Approve Leave</a></li>           
+            <li><a href="addleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New Leave</a></li>
+            <li><a href="reportleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Leave Report</a></li>
           </ul>
         </div>
       </li>
@@ -287,18 +287,19 @@ checkLoggedIn();
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
             <li><a href="viewmemo.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">View Memo</a></li>
             <li><a href="addmemo.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Add Memo</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Archived Memo</a></li>           
+            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Inactive Memo</a></li>           
           </ul>
         </div>
       </li>
       <li class="border-top my-3"></li>
       <li class="mb-1">
         <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          <?php echo $_SESSION["email"]; ?>
+          <?php echo $_SESSION["user_email"]; ?>
         </button>
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
             <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">My Profile</a></li>
+            <li><a href="myleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">My Leave</a></li>
             <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Contract</a></li>
             <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">My Performance</a></li>
             <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Log Out</a></li>

@@ -7,22 +7,22 @@ session_start(); // Start session at the beginning
 $errors = []; // Initialize an array to store errors
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $emp_email = $_POST['emp_email'];
+    $emp_password = $_POST['emp_password'];
 
     // Use prepared statement to prevent SQL injection
-    $stmt = $pdo->prepare("SELECT * FROM userinfo WHERE email = :email");
-    $stmt->bindParam(':email', $email);
+    $stmt = $pdo->prepare("SELECT * FROM employee WHERE emp_email = :emp_email");
+    $stmt->bindParam(':emp_email', $emp_email);
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // For now, compare passwords without hashing (not recommended for production)
-        if ($password === $user['password']) {
-            $_SESSION['email'] = $user['email'];
+        // Compare passwords without hashing (for testing only)
+        if ($emp_password === $user['emp_password']) {
+            $_SESSION['emp_email'] = $user['emp_email'];
             header('Location: index.php');
-            exit();
+
         } else {
             $errors[] = "Invalid password";
         }
@@ -30,6 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = "User not found";
     }
 }
+
+
 ?>
 
 <!-- login form here -->
@@ -41,11 +43,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h2 class="mb-4">Login</h2>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" placeholder="test@test.my" name="email" id="email" class="form-control" required>
+                    <input type="email" placeholder="john.doe@example.com" name="emp_email" id="email" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" required>
+                    <input type="password" name="emp_password" id="password" class="form-control" required>
                 </div>
                 <?php foreach ($errors as $error) : ?>
                     <div class="alert alert-danger" role="alert">

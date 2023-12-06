@@ -3,9 +3,8 @@
 require "conn.php";
 
 // Directly query the database for user information
-$sql = "SELECT userinfo.*, empinfo.*
-        FROM userinfo
-        LEFT JOIN empinfo ON userinfo.email = empinfo.email";
+$sql = "SELECT *
+        FROM employee";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
@@ -46,26 +45,24 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Email</th>
                     <th>Status</th>
                     <th>Designation</th>
-                    <th>Action</th>
-                    <th>Select</th>
+                    <th>Department</th>
+                    <th>Start Date</th>                
+                    <th>End Date</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($users as $user): ?>
                     <tr>
-                        <td><?php echo $user["id"]; ?></td>
-                        <td><?php echo $user["name"]; ?></td>
-                        <td><?php echo $user["phone"]; ?></td>
-                        <td><?php echo $user["email"]; ?></td>
-                        <td><?php echo $user["status"]; ?></td>
-                        <td><?php echo $user["designation"]; ?></td>
-                        <td><?php
-                        echo "<a class='icon-link' title='View User Profile' href='profile.php?email={$user["email"]}'>View<i class='fas fa-eye'></i></a>";
-                        echo "<a class='icon-link' title='View Report' href='reports.php?email={$user["email"]}'><i class='fas fa-chart-bar'></i></a>";
-                        ?></td>
-                        <td>
-                            <input type="checkbox">
-                        </td>
+                    <td><?php echo $user["emp_id"]; ?></td>
+                    <td><?php echo $user["emp_name"]; ?></td>
+                    <td><?php echo $user["emp_phone"]; ?></td>
+                    <td><?php echo $user["emp_email"]; ?></td>
+                    <td><?php echo $user["emp_status"]; ?></td>
+                    <td><?php echo $user["emp_designation"]; ?></td>
+                    <td><?php echo $user["emp_department"]; ?></td>
+                    <td><?php echo $user["emp_start_date"]; ?></td>                   
+                    <td><?php echo $user["emp_end_date"]; ?></td>  
+
                     </tr>
                 <?php endforeach; ?>
             </tbody>
