@@ -2,13 +2,12 @@
 require 'conn.php';
 ?>
 
-<div class="container mx-auto">
-    <div class="row">
-    <div class="col-md-3">
-       <?php include "header.php"; ?>
-    </div>
-    <div class="col-md-8  mt-5 mx-auto">
         
+       <?php include "header.php"; ?>
+       
+       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+  <br>      
 <h3>Registration</h3><hr>
 <form action="register_process.php" method="post">
 
@@ -387,7 +386,6 @@ https://codepen.io/aniket/pen/WxByVp
 
 </form>
 </div></div></div>
-<?php include "footer.php"; ?>
 
 <script>$(document).ready(function () {
 
@@ -443,3 +441,4 @@ allPrevBtn.click(function(){
 $('div.setup-panel div a.btn-primary').trigger('click');
 });
 </script>
+</main>

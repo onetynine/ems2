@@ -2,12 +2,10 @@
 require 'conn.php';
 ?>
 
-<div class="container mx-auto">
-    <div class="row">
-    <div class="col-md-3">
+
        <?php include "header.php"; ?>
-    </div>
-    <div class="col-md-8  mt-5 mx-auto">
+       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <br>
         
 <h3>Apply Leave</h3><hr>
 <form action="applyleave_process.php" method="post">
@@ -50,19 +48,7 @@ https://codepen.io/aniket/pen/WxByVp
       position: relative;
   }
 
-  .btn-circle: {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border-radius: 15px;
 
-    .btn-circle:hover {
-
-    }
-  }
 </style>
 
 <br>
@@ -214,7 +200,6 @@ https://codepen.io/aniket/pen/WxByVp
 
 </form>
 </div></div></div>
-<?php include "footer.php"; ?>
 
 <script>$(document).ready(function () {
 
