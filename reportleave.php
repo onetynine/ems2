@@ -24,19 +24,16 @@ $stmt->execute();
 // Fetch all rows into an associative array
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<div class="container mx-auto">
-    <div class="row">
-    <div class="col-md-3">
+
        <?php include "header.php"; ?>
-    </div>
+       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <br>
 <style>
     .content{
         margin-top: 35px;
     }
 </style>
-
-<div class="col-md-8 pt-4 mt-5 mx-auto">
-      
+    
     <h3>Dashboard</h3><hr>
     <div class="text-start">
             <h5>Leave Report</h5>
@@ -74,8 +71,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div></div></div>
 
-<?php include "footer.php"; ?>
-
+                </main>
 </body>
 </html>
 

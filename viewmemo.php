@@ -4,10 +4,8 @@ require "conn.php";
 
 // Directly query the database for user information
 $sql = "SELECT *
-        FROM memoinfo
-        ORDER BY dateposted DESC";
-
-
+        FROM memo
+        ORDER BY memo_post_date DESC";
 
 
 $stmt = $pdo->prepare($sql);
@@ -17,12 +15,9 @@ $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="container mx-auto">
-    <div class="row">
-    <div class="col-md-3">
        <?php include "header.php"; ?>
-    </div>
-
+       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <br>
 <style>
     .content{
         margin-top: 35px;
@@ -31,9 +26,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
   background: var(--bs-table-bg) !important;
 }
 </style>
-
-<div class="col-md-8 pt-4 mt-5 mx-auto">
-      
+  
     <h3>Dashboard</h3><hr>
     <div class="text-start">
             <h5>Memo</h5>
@@ -57,13 +50,13 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php foreach ($users as $user): ?>
 
 <div class="card">
-  <h6 class="card-header">Memo #<?php echo $user["memoid"]; ?> / <?php echo $user["dateposted"]; ?> <span class="badge text-bg-danger">Urgent</span>
+  <h6 class="card-header">Memo #<?php echo $user["memo_id"]; ?> / <?php echo $user["memo_post_date"]; ?> <span class="badge text-bg-danger">Urgent</span>
   </h6>
   <div class="card-body">
-    <h5 class="card-title"><?php echo $user["memotitle"]; ?></h5>
-    <h6 class="card-text"><?php echo $user["memostart"]; ?> to <?php echo $user["memoend"]; ?></h6>
-    <p class="card-text"><?php echo $user["memocontent"]; ?></p>
-    <a href='memodetail.php?memoid=<?php echo $user["memoid"]; ?>' class="btn btn-sm btn-primary">Read more...</a>
+    <h5 class="card-title"><?php echo $user["memo_subject"]; ?></h5>
+    <h6 class="card-text"><?php echo $user["memo_start_date"]; ?> to <?php echo $user["memo_end_date"]; ?></h6>
+    <p class="card-text"><?php echo $user["memo_content"]; ?></p>
+    <a href='memodetail.php?memoid=<?php echo $user["memo_id"]; ?>' class="btn btn-sm btn-primary">Read more...</a>
   </div>
 </div>
 <br>
@@ -73,7 +66,6 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 </div></div></div>
 </div>
-<?php include "footer.php"; ?>
 
 </body>
 </html>

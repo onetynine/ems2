@@ -16,20 +16,13 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
        <?php include "header.php"; ?>
        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-<style>
-    .content{
-        margin-top: 35px;
-    }
-    html[data-bs-theme="dark"] div.dtsp-panesContainer div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody {
-  background: var(--bs-table-bg) !important;
-}
-</style>
+
 
       <br>
-    <h3>Dashboard</h3><hr>
+    <h3>Employee</h3><hr>
     <div class="text-start">
-            <h5>Employee <a href="emp_detail.php">Detailed View</a></h5>
-            <span> Displays employee information in table form. Search, filter and edit individually. </span>
+            <h5>View Mode: Summary / <a href="emp_detail.php">Detailed</a> </h5>
+            <span> Displays employee information in table form. Search, filter and edit individually.</span>
             <br>
         </div>
     <div class="table mt-4">
@@ -38,12 +31,12 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Contact</th>
                     <th>Email</th>
                     <th>Designation</th>
                     <th>Department</th>
                     <th>Contract Type</th>
                     <th>Current Tenure</th> 
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,7 +44,6 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <td><?php echo $user["emp_id"]; ?></td>
                     <td><?php echo $user["emp_name"]; ?></td>
-                    <td><?php echo $user["emp_phone"]; ?></td>
                     <td><?php echo $user["emp_email"]; ?></td>
                     <td><?php echo $user["emp_designation"]; ?></td>
                     <td><?php echo $user["emp_department"]; ?></td>   
@@ -65,6 +57,24 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo $daysDifference . " days";
                         ?>
                     </td>
+                    <td>
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-primary btn-sm">
+                    <i class="bi bi-person-badge"></i><span class="visually-hidden">Button</span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm">
+                    <i class="bi bi-pencil"></i>
+                    <span class="visually-hidden">Button</span>
+                    <button type="button" class="btn btn-primary btn-sm">
+                    <i class="bi bi-trash"></i>
+                    <span class="visually-hidden">Button</span>
+                    <button type="button" class="btn btn-primary btn-sm">
+                    <i class="bi bi-three-dots"></i>
+                    <span class="visually-hidden">Button</span>
+            </div>
+
+
+                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
@@ -77,43 +87,27 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </body>
 </html>
 
-<style>
-    .icon-link i {
-    margin-right: 12px;
-}
-
-
-</style>
 
 <script>
 $(document).ready(function() {
     $('#info').DataTable({
+        dom: "<'row'<'col-sm-12 d-flex justify-content-between'Bf>>" + 
+             "<'row'<'col-sm-12'tr>>" +
+             "<'row'<'col-sm-4'l><'col-sm-8'pi>>",
         scrollX: true,
         responsive: true,
-        dom: 'Plfrtip',
+        select: true,
+        buttons: [
+            {
+                text: 'Export as...',
+                extend: 'collection',
+                buttons: [
+                    'csv', 'excel', 'pdf' , 'print'
+                ]
+            }
+        ]
+       
         
-        searchPanes: {
-            initCollapsed: true
-        },
-        
-        columnDefs: [
-        {
-            searchPanes: {
-                show: true
-                
-            },
-            targets: [3,4,5]
-        },
-        {
-            searchPanes: {
-                show: false
-            },
-            targets: [0]
-        }
-        
-    ],
-    
-    
             });
 });
 </script>

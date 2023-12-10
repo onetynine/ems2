@@ -13,26 +13,16 @@ $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="container mx-auto">
-    <div class="row">
-    <div class="col-md-3">
        <?php include "header.php"; ?>
-    </div>
-<style>
-    .content{
-        margin-top: 35px;
-    }
-    html[data-bs-theme="dark"] div.dtsp-panesContainer div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody {
-  background: var(--bs-table-bg) !important;
-}
-</style>
+       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-<div class="col-md-8 pt-4 mt-5 mx-auto">
-      
-    <h3>Dashboard</h3><hr>
+   <br>
+       <h3>Employee</h3><hr>
     <div class="text-start">
-            <h5>Employee Detail View</h5>
-            <span> <a href="emp_summary.php">Click to go back.</a> </span>
+            <h5>View Mode: <a href="emp_summary.php">Summary</a> / Detailed</h5>
+            <h6> Current Wage Spending : RM100,000 / year</h6>
+            <h6> Total Active Staff : 78</h6>
+            <h6> Total Active Department : 6</h6>
             <br>
         </div>
     <div class="table mt-4">
@@ -86,8 +76,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div></div></div>
 
-<?php include "footer.php"; ?>
-
+       </main>
 </body>
 </html>
 
@@ -102,36 +91,45 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <script>
 $(document).ready(function() {
     $('#info').DataTable({
-        select: true,
-        colReorder: true,
-        scrollX: true,
-        responsive: true,
-        dom: 'Plfrtip',
-        
+        dom: "<'row'<'col-sm-12 d-flex justify-content-between'Bf>>" + 
+             "<'row'<'col-sm-12'tr>>" +
+             "<'row'<'col-sm-4'l><'col-sm-8'pi>>P",
         searchPanes: {
-            initCollapsed: true
+            searchPanes: true,
+            initCollapsed: true,
+
         },
-        
         columnDefs: [
-        {
-            searchPanes: {
-                show: true
-                
+            {
+                searchPanes: {
+                    show: true
+                },
+                targets: [0,1,2,3,4,5,6,7,8,9,10,11]
             },
-            targets: [3,4,5]
-        },
-        {
-            searchPanes: {
-                show: false
-            },
-            targets: [0]
-        }
+            {
+                searchPanes: {
+                    show: false
+                },
+                targets: []
+            }
+        ],
+        scrollY: true,
+        responsive: false,
+        select: true,
+        buttons: [
+            {
+                text: 'Export as...',
+                extend: 'collection',
+                buttons: [
+                    'csv', 'excel', 'pdf' , 'print'
+                ]
+            }
+        ]
+       
         
-    ],
-    
-    
             });
 });
+
 </script>
 
  
