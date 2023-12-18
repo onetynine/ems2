@@ -3,7 +3,8 @@ require 'conn.php';
 ?>
 
         
-       <?php include "header.php"; ?>
+       <?php include "header.php"; 
+       ?>
        
        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
@@ -53,7 +54,7 @@ https://codepen.io/aniket/pen/WxByVp
 
 <br>
 <div class="stepwizard setup-panel d-flex flex-row align-items-center text-center m-2">
-    <div class="stepwizard-step m-auto">
+    <div class="stepwizard-step m-auto ">
         <a href="#step-1" type="button" class="btn btn-sm btn-primary btn-circle">1 - Personal Info</a>
         
     </div>
@@ -65,9 +66,6 @@ https://codepen.io/aniket/pen/WxByVp
     </div>
     <div class="stepwizard-step m-auto">
         <a href="#step-4" type="button" class="btn btn-sm btn-default btn-circle" disabled>4 - Misc.</a>
-    </div>
-    <div class="stepwizard-step m-auto">
-        <a href="#step-5" type="button" class="btn btn-sm btn-default" disabled>5 - Confirmation</a>
     </div>
 </div><br>
 
@@ -81,7 +79,7 @@ https://codepen.io/aniket/pen/WxByVp
 <script>
   // Function to update the progress bar based on the active step
   function updateProgressBar() {
-    var totalSteps = 5; // Total number of steps
+    var totalSteps = 4; // Total number of steps
     var activeStep = document.querySelector('.stepwizard-step a.btn-primary');
 
     if (activeStep) {
@@ -106,19 +104,19 @@ https://codepen.io/aniket/pen/WxByVp
   </div>
 <div class="card-body">
 <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="emp_name" placeholder="emp_name" name="emp_name" required >
+        <input type="text" class="form-control" id="emp_name" placeholder="emp_name" name="emp_name" required>
         <small id="nameError" style="color: red;"></small>
         <label for="emp_name">Name</label>
     </div>
 
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="emp_nric" placeholder="NRIC" name="emp_nric" required >
+        <input type="text" class="form-control" id="emp_nric" placeholder="NRIC" name="emp_nric" required>
         <small id="nricError" style="color: red;"></small>
         <label for="emp_nric">NRIC</label>
     </div>
 
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="emp_phone" placeholder="phone" name="emp_phone" required>
+        <input type="tel" class="form-control" id="emp_phone" placeholder="phone" name="emp_phone" required>
         <label for="emp_phone">Phone</label>
         <small id="phoneError" style="color: red;"></small>
     </div>
@@ -128,6 +126,10 @@ https://codepen.io/aniket/pen/WxByVp
         <small id="emailError" style="color: red;"></small>
         <label for="emp_email">Email address</label>
     </div>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" name="emp_admin_access" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Admin Access</label>
+    </div><br>
     <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
 
 </div></div></div>
@@ -145,11 +147,11 @@ https://codepen.io/aniket/pen/WxByVp
   </div>
 <div class="card-body">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="emp_designation" name="emp_designation">
+            <input type="text" class="form-control" required id="floatingInput" placeholder="emp_designation" name="emp_designation">
             <label for="floatingInput">Designation</label>
         </div>
         <div class="form-floating mb-3">
-        <select class="form-select" id="empDepartment" name="emp_department">
+        <select class="form-select" id="empDepartment" name="emp_department" required>
             <option value="option1"></option>
             <option value="option2">Information Technology</option>
             <option value="option3">Operation</option>
@@ -159,7 +161,7 @@ https://codepen.io/aniket/pen/WxByVp
         </div>
 
         <div class="form-floating mb-3">
-        <select class="form-select" id="emp_contract_status" name="emp_contract_status">
+        <select class="form-select" id="emp_contract_status" name="emp_contract_status" required>
             <option value="option1"></option>
             <option value="option2">Full Time</option>
             <option value="option3">Part Time</option>
@@ -173,7 +175,7 @@ https://codepen.io/aniket/pen/WxByVp
         <div class="row g-2"> 
             <div class="col-md">
                 <div class="form-floating mb-3">
-                    <input type="date" required class="form-control" id="floatingInput" placeholder="$" name="emp_start_date">
+                    <input type="date"  class="form-control" id="floatingInput" placeholder="$" name="emp_start_date">
                     <label for="floatingInput">Start Date</label>
                 </div>
             </div>
@@ -187,7 +189,7 @@ https://codepen.io/aniket/pen/WxByVp
 
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="status" name="status">
+            <input type="text" class="form-control" id="floatingInput" placeholder="status" name="status" required>
             <label for="floatingInput">Status</label>
         </div>
     
@@ -271,23 +273,10 @@ https://codepen.io/aniket/pen/WxByVp
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h5 class="card-title">Double confirm data</h5>
-                <p class="card-text"> Fill up the user id (or extension) or the entire url of profile id</p>
+                <p class="card-text"> Do you want to give a check?</p>
             </div>
     <div class="card-body">
 
-        <p>Name: <?php echo $_SESSION['emp_name'] ?> </p>
-        <p>Email Address:</p>
-        <p>Designation:</p>
-        <p>Department:</p>
-        <p>Contract Type:</p>
-        <p>Start Date:</p>
-        <p>End Date:</p>
-        <p>Status:</p>
-        <p>NRIC:</p>
-        <p>Phone:</p>
-        <p>Admin Access:</p>
-        <p>AL:</p>
-        <p>MC:</p>
 
 <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -304,7 +293,54 @@ https://codepen.io/aniket/pen/WxByVp
 </form>
 </div></div></div>
 
-<script>$(document).ready(function () {
+
+</main>
+
+<script>
+   // Function for live input validation
+   function validateInput(inputElement, regex, errorElementId, errorMessage) {
+      inputElement.addEventListener('input', function () {
+        var inputValue = this.value;
+
+        // Check if the input is empty
+        if (inputValue.trim() === '') {
+          document.getElementById(errorElementId).textContent = '';
+        } else {
+          // Validate the input using the provided regex
+          if (regex.test(inputValue)) {
+            document.getElementById(errorElementId).textContent = '';
+          } else {
+            document.getElementById(errorElementId).textContent = errorMessage;
+          }
+        }
+      });
+    }
+
+    // Validate Name
+    validateInput(
+      document.getElementById('emp_name'),
+      /^[a-zA-Z\s]+$/,
+      'nameError',
+      'Invalid name. Please use only letters and spaces.'
+    );
+
+    // Validate Email
+    validateInput(
+      document.getElementById('emp_email'),
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      'emailError',
+      'Invalid email address.'
+    );
+
+    // Validate Phone Number
+validateInput(
+  document.getElementById('emp_phone'),
+  /^\d{10,}$/,
+  'phoneError',
+  'Invalid phone number. Please enter at least 10 digits.'
+);
+
+$(document).ready(function () {
 
 var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
@@ -357,51 +393,23 @@ allPrevBtn.click(function(){
 
 $('div.setup-panel div a.btn-primary').trigger('click');
 });
-
-</script>
-</main>
+  </script>
 
 <script>
-   // Function for live input validation
-   function validateInput(inputElement, regex, errorElementId, errorMessage) {
-      inputElement.addEventListener('input', function () {
-        var inputValue = this.value;
+    function validateAndProceed() {
+        // Get values from paragraphs
+        var name = document.getElementById('name').textContent.trim();
+        var email = document.getElementById('email').textContent.trim();
+        // Get values for other paragraphs similarly
 
-        // Check if the input is empty
-        if (inputValue.trim() === '') {
-          document.getElementById(errorElementId).textContent = '';
+        // Check if all required fields are filled
+        if (name !== '' && email !== '') {
+            // If all required fields are filled, proceed to the next step
+            document.getElementById('step-4').style.display = 'none'; // Hide current step
+            document.getElementById('step-5').style.display = 'block'; // Show next step
         } else {
-          // Validate the input using the provided regex
-          if (regex.test(inputValue)) {
-            document.getElementById(errorElementId).textContent = '';
-          } else {
-            document.getElementById(errorElementId).textContent = errorMessage;
-          }
+            // If any required field is empty, show an alert or handle it accordingly
+            alert('Please fill in all required fields before proceeding.');
         }
-      });
     }
-
-    // Validate Name
-    validateInput(
-      document.getElementById('emp_name'),
-      /^[a-zA-Z\s]+$/,
-      'nameError',
-      'Invalid name. Please use only letters and spaces.'
-    );
-
-    // Validate Email
-    validateInput(
-      document.getElementById('emp_email'),
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-      'emailError',
-      'Invalid email address.'
-    );
-
-    // Validate Phone Number
-validateInput(
-  document.getElementById('emp_phone'),
-  /^\d{10,}$/,
-  'phoneError',
-  'Invalid phone number. Please enter at least 10 digits.'
-);
-  </script>
+</script>

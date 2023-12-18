@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $sql = "INSERT INTO employee 
     (emp_name, emp_email, emp_designation, emp_department, emp_contract_type, 
-    emp_start_date, emp_end_date, emp_status, emp_nric, emp_phone, emp_admin_access,emp_al, emp_mc) 
+    emp_start_date, emp_end_date, emp_status, emp_nric, emp_phone, emp_admin_access, emp_al, emp_mc) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $pdo->prepare($sql);
