@@ -131,7 +131,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
    // Get the canvas element and initialize the chart
    var ctx = document.getElementById('myChart2').getContext('2d');
    var myChart = new Chart(ctx, {
-      type: 'bar', // Change the chart type as needed (bar, line, pie, etc.)
+      type: 'line', // Change the chart type as needed (bar, line, pie, etc.)
       data: data,
       options: {
          scales: {
