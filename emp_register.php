@@ -127,9 +127,10 @@ https://codepen.io/aniket/pen/WxByVp
         <label for="emp_email">Email address</label>
     </div>
     <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" role="switch" name="emp_admin_access" id="flexSwitchCheckDefault">
-      <label class="form-check-label" for="flexSwitchCheckDefault">Admin Access</label>
-    </div><br>
+  <input class="form-check-input" type="checkbox" role="switch" name="emp_admin_access" id="emp_admin_access">
+  <label class="form-check-label" for="emp_admin_access">Admin Access</label>
+</div>
+<br>
     <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
 
 </div></div></div>
@@ -161,7 +162,7 @@ https://codepen.io/aniket/pen/WxByVp
         </div>
 
         <div class="form-floating mb-3">
-        <select class="form-select" id="emp_contract_status" name="emp_contract_status" required>
+        <select class="form-select" id="emp_contract_type" name="emp_contract_type" required>
             <option value="option1"></option>
             <option value="option2">Full Time</option>
             <option value="option3">Part Time</option>
@@ -175,21 +176,16 @@ https://codepen.io/aniket/pen/WxByVp
         <div class="row g-2"> 
             <div class="col-md">
                 <div class="form-floating mb-3">
-                    <input type="date"  class="form-control" id="floatingInput" placeholder="$" name="emp_start_date">
+                    <input type="date"  class="form-control" value="2020-01-01" id="floatingInput" placeholder="$" name="emp_start_date">
                     <label for="floatingInput">Start Date</label>
                 </div>
             </div>
-            <div class="col-md">
-                <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="floatingInput" placeholder="enddate" name="emp_end_date">
-                    <label for="floatingInput">End Date</label>
-                </div>
-            </div>
+
         </div>
 
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="status" name="status" required>
+            <input type="text" class="form-control" id="floatingInput" placeholder="status" name="emp_status" required>
             <label for="floatingInput">Status</label>
         </div>
     
