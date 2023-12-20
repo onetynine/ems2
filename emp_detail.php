@@ -39,7 +39,6 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Admin Access</th>
                     <th>NRIC</th>
                     <th>Start Date</th>
-                    <th>End Date</th>
                     <th>Contract Type</th>
                     <th>Current Tenure</th> 
                 </tr>
@@ -56,16 +55,18 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $user["emp_status"]; ?></td> 
                     <td><?php echo $user["emp_admin_access"]; ?></td> 
                     <td><?php echo $user["emp_nric"]; ?></td> 
-                    <td><?php echo $user["emp_start_date"]; ?></td> 
-                    <td><?php echo $user["emp_end_date"]; ?></td>   
+                    <td><?php echo $user["emp_start_date"]; ?></td>  
                     <td><?php echo $user["emp_contract_type"]; ?></td> 
                     <td>
                         <?php
-                        // Calculate the number of days from emp_start_date to today (chatGPT)
-                        $startDate = new DateTime($user["emp_start_date"]);
-                        $today = new DateTime();
-                        $daysDifference = $startDate->diff($today)->days;
-                        echo $daysDifference . " days";
+                        if ($user["emp_start_date"] !== null) {
+                            $startDate = new DateTime($user["emp_start_date"]);
+                            $today = new DateTime();
+                            $daysDifference = $startDate->diff($today)->days;
+                            echo $daysDifference . " days";
+                        } else {
+                            echo "N/A"; // Adjust the message based on your needs
+                        }
                         ?>
                     </td>
                 </tr>

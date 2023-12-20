@@ -10,7 +10,7 @@ require 'conn.php';
 
   <br>      
 <h3>Registration</h3><hr>
-<form action="emp_register_process.php" method="post">
+<form id="myForm" action="emp_register_process.php" method="post">
 
 <!-- 
 Multi step registration js  is based on 
@@ -64,9 +64,7 @@ https://codepen.io/aniket/pen/WxByVp
     <div class="stepwizard-step m-auto">
         <a href="#step-3" type="button" class="btn btn-sm btn-default btn-circle" disabled>3 - Leave Info</a>
     </div>
-    <div class="stepwizard-step m-auto">
-        <a href="#step-4" type="button" class="btn btn-sm btn-default btn-circle" disabled>4 - Misc.</a>
-    </div>
+
 </div><br>
 
 <?php 
@@ -79,7 +77,7 @@ https://codepen.io/aniket/pen/WxByVp
 <script>
   // Function to update the progress bar based on the active step
   function updateProgressBar() {
-    var totalSteps = 4; // Total number of steps
+    var totalSteps = 3; // Total number of steps
     var activeStep = document.querySelector('.stepwizard-step a.btn-primary');
 
     if (activeStep) {
@@ -258,28 +256,48 @@ https://codepen.io/aniket/pen/WxByVp
 
 <br>
  <button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
- <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
+ <button type="submit" id="submitBtn" class="btn btn-primary" data-bs-target="#staticBackdrop">Submit</button>
+
 
 </section> 
 
-
- <!-- Social Media Info Section --> 
- <section class="text-start row setup-content" id="step-4">
-    <div class="tab">
-        <div class="card" style="width: 100%;">
-            <div class="card-body">
-                <h5 class="card-title">Double confirm data</h5>
-                <p class="card-text"> Do you want to give a check?</p>
-            </div>
-    <div class="card-body">
-
-
-<button class="btn btn-default prevBtn pull-left" type="button" >Prev</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            
 </div></div>
-</section> 
-<br>
 
+<br>
+<script>
+         document.addEventListener('DOMContentLoaded', function () {
+            // Show the modal when the form submit button is clicked
+            document.getElementById('submitBtn').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+                myModal.show();
+            });
+
+            // Submit the form when the modal submit button is clicked
+            document.getElementById('modalSubmitBtn').addEventListener('click', function () {
+                document.getElementById('myForm').submit();
+            });
+        });
+</script>
+<!-- Add this modal structure where your HTML content is present -->
+<div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Add your modal content here -->
+                <p>Submit the registration.</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" id="modalSubmitBtn" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+             </div>
+        </div>
+    </div>
+</div>
 
 
     </div><br>
@@ -337,58 +355,67 @@ validateInput(
 );
 
 $(document).ready(function () {
-
-var navListItems = $('div.setup-panel div a'),
+    var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
         allNextBtn = $('.nextBtn'),
         allPrevBtn = $('.prevBtn');
 
-allWells.hide();
+    allWells.hide();
 
-navListItems.click(function (e) {
-    e.preventDefault();
-    var $target = $($(this).attr('href')),
+    navListItems.click(function (e) {
+        e.preventDefault();
+        var $target = $($(this).attr('href')),
             $item = $(this);
 
-    if (!$item.hasClass('disabled')) {
-        navListItems.removeClass('btn-primary').addClass('btn-default');
-        $item.addClass('btn-primary');
-        allWells.hide();
-        $target.show();
-        $target.find('input:eq(0)').focus();
-    }
-});
-
-allNextBtn.click(function(){
-    var curStep = $(this).closest(".setup-content"),
-        curStepBtn = curStep.attr("id"),
-        nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-        curInputs = curStep.find("input[type='text'],input[type='url']"),
-        isValid = true;
-
-    $(".form-group").removeClass("has-error");
-    for(var i=0; i<curInputs.length; i++){
-        if (!curInputs[i].validity.valid){
-            isValid = false;
-            $(curInputs[i]).closest(".form-group").addClass("has-error");
+        if (!$item.hasClass('disabled')) {
+            navListItems.removeClass('btn-primary').addClass('btn-default');
+            $item.addClass('btn-primary');
+            allWells.hide();
+            $target.show();
+            $target.find('input:eq(0)').focus();
         }
-    }
+    });
 
-    if (isValid)
-        nextStepWizard.removeAttr('disabled').trigger('click');
+    // Initially disable the Next button
+    allNextBtn.addClass('btn-secondary').attr('disabled', 'disabled');
+
+    allNextBtn.click(function () {
+        var curStep = $(this).closest(".setup-content"),
+            curStepBtn = curStep.attr("id"),
+            nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+            curInputs = curStep.find("input[type='text'],input[type='url']"),
+            isValid = true;
+
+        $(".form-group").removeClass("has-error");
+        for (var i = 0; i < curInputs.length; i++) {
+            if (!curInputs[i].validity.valid) {
+                isValid = false;
+                $(curInputs[i]).closest(".form-group").addClass("has-error");
+            }
+        }
+
+        // Update the appearance and enable/disable the Next button
+        if (isValid) {
+            $(this).removeClass('btn-danger').addClass('btn-primary');
+            nextStepWizard.removeAttr('disabled');
+        } else {
+            $(this).removeClass('btn-primary').addClass('btn-secondary');
+            nextStepWizard.attr('disabled', 'disabled');
+        }
+    });
+
+    allPrevBtn.click(function () {
+        var curStep = $(this).closest(".setup-content"),
+            curStepBtn = curStep.attr("id"),
+            prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
+
+        $(".form-group").removeClass("has-error");
+        prevStepWizard.removeAttr('disabled').trigger('click');
+    });
+
+    $('div.setup-panel div a.btn-primary').trigger('click');
 });
 
-allPrevBtn.click(function(){
-    var curStep = $(this).closest(".setup-content"),
-        curStepBtn = curStep.attr("id"),
-        prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
-
-    $(".form-group").removeClass("has-error");
-    prevStepWizard.removeAttr('disabled').trigger('click');
-});
-
-$('div.setup-panel div a.btn-primary').trigger('click');
-});
   </script>
 
 <script>
