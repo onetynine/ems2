@@ -7,7 +7,7 @@ checkLoggedIn();
 <html lang="en" data-bs-theme="auto">
   <head>
     <script src="assets/js/color-modes.js"></script>
-
+  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -21,7 +21,7 @@ checkLoggedIn();
    
 
     <!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet">

@@ -9,8 +9,6 @@ require 'conn.php';
        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
   <br> 
-  <!-- Add this div to show live feedback -->
-<div id="emailFeedback"></div>
      
 <h3>Registration</h3><hr>
 <form action="emp_register_process.php" method="post" class="needs-validation" novalidate>
@@ -51,11 +49,10 @@ require 'conn.php';
     </div>
   
     <div class="form-floating mb-3">
-    <input type="email" class="form-control <?php echo isset($emp_email_error) ? 'is-invalid' : ''; ?>" id="emp_email" placeholder="name@example.com" name="emp_email" required value="<?php echo isset($emp_email) ? $emp_email : ''; ?>">
+    <input type="email" class="form-control" id="emp_email" placeholder="name@example.com" name="emp_email" required onkeyup="checkDuplicateEmail()">
     <label for="emp_email">Email address</label>
     <div class="invalid-feedback">
-        Please type a valid email address (eg. email@gmail.com)
-        </div>
+    </div>
     </div>
 
 
@@ -226,25 +223,34 @@ require 'conn.php';
   })
 })()</script>
 
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 <script>
-$(document).ready(function() {
-    // Check email duplication on keyup event
-    $('#emp_email').keyup(function() {
-        var email = $(this).val();
+function checkDuplicateEmail() {
+    const emailInput = $('#emp_email');
+    const email = emailInput.val();
 
-        // Make an AJAX request to check for email duplication
-        $.ajax({
-            type: 'POST',
-            url: 'check_email.php', // Create this file to handle email checking
-            data: { email: email },
-            success: function(response) {
-                // Display the feedback
-                $('#emailFeedback').html(response);
-            }
+    if (email.trim() !== '') {
+        $.post('check_duplicate_email.php', { emp_email: email }, function (response) {
+            const trimmedResponse = response.trim().toLowerCase();
+
+            // Update the emailFeedback div with the response
+            $('#emailFeedback').html(trimmedResponse);
+
+            // Determine whether the email is valid or invalid
+            const isValidEmail = !trimmedResponse.includes('invalid');
+
+            // Update the Bootstrap validation styling
+            emailInput.removeClass('is-valid is-invalid').addClass(isValidEmail ? 'is-valid' : 'is-invalid');
+
+            // Update the invalid feedback message
+            const invalidFeedback = $('#emp_email').siblings('.invalid-feedback');
+            invalidFeedback.html(isValidEmail ? 'Please type a valid email address (eg. email@gmail.com)' : response);
         });
-    });
-});
+    } else {
+        // Clear the emailFeedback div and remove the 'is-valid' and 'is-invalid' classes
+        $('#emailFeedback').html('');
+        emailInput.removeClass('is-valid is-invalid');
+    }
+}
+
+
 </script>
