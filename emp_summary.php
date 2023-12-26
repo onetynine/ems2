@@ -62,18 +62,20 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </td>
                     <td>
                     <div class="btn-group">
-                    <button type="button" class="btn btn-primary btn-sm">
-                    <i class="bi bi-person-badge"></i><span class="visually-hidden">Button</span>
-                    </button>
-                    <button type="button" class="btn btn-primary btn-sm">
-                    <i class="bi bi-pencil"></i>
+                <a href="emp_profile.php?id=<?php echo $user['emp_id']; ?>" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                    <i class="bi bi-person-badge"></i><span class="visually-hidden">View</span>
+                </a>
+                <a href="emp_profile_edit.php?id=<?php echo $user['emp_id']; ?>" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                    <i class="bi bi-pencil"></i>     <span class="visually-hidden">Edit</span>
+                    </a>
+                    <a href="emp_profile_delete.php?id=<?php echo $user['emp_id']; ?>" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                     <i class="bi bi-trash"></i>
                     <span class="visually-hidden">Button</span>
-                    <button type="button" class="btn btn-primary btn-sm">
-                    <i class="bi bi-trash"></i>
-                    <span class="visually-hidden">Button</span>
-                    <button type="button" class="btn btn-primary btn-sm">
+                    </a>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="More Options">
                     <i class="bi bi-three-dots"></i>
                     <span class="visually-hidden">Button</span>
+                </button>
             </div>
 
 
