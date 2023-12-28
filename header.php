@@ -508,7 +508,7 @@ checkLoggedIn();
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
+              <a class="nav-link d-flex align-items-center gap-2" href="logout.php">
                 <svg class="bi"><use xlink:href="#door-closed"/></svg>
                 Sign out
               </a>
@@ -520,79 +520,7 @@ checkLoggedIn();
         </div>
       </div>
     </div>
-<!-- <div class="sidebar d-flex justify-content-between flex-wrap flex-md-nowrap pt-3  mb-3 ">
 
-    <ul class="sticky list-unstyled ps-0">
-      <li class="mb-1">
-        <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-          Dashboard
-        </button>
-        <div class="collapse show" id="home-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
-            <li><a href="index.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded active" aria-current="true">Employee</a></li>
-            <li><a href="reportleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Leave</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Memo</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">KPI</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
-          Employee 
-        </button>
-        <div class="collapse show" id="dashboard-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
-            <li><a href="register.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New Employee</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Archive</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="true">
-          Leave
-        </button>
-        <div class="collapse show" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
-            <li><a href="applyleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Apply Leave</a></li>
-
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Approve Leave</a></li>           
-            <li><a href="addleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New Leave</a></li>
-            <li><a href="reportleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Leave Report</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#memo-collapse" aria-expanded="true">
-          Memo
-        </button>
-        <div class="collapse show" id="memo-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
-            <li><a href="viewmemo.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">View Memo</a></li>
-            <li><a href="addmemo.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Add Memo</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Inactive Memo</a></li>           
-          </ul>
-        </div>
-      </li>
-      <li class="border-top my-3"></li>
-      <li class="mb-1">
-        <button class="btn btn-lg btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          <?php echo $_SESSION["emp_email"]; ?>
-        </button>
-        <div class="collapse" id="account-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 large">
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">My Profile</a></li>
-            <li><a href="myleave.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded">My Leave</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Contract</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">My Performance</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Log Out</a></li>
-          </ul>
-        </div>
-      </li>
-      
-    </ul>
-    
-  </div>
-  </div> -->
 
 <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 

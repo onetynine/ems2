@@ -52,6 +52,7 @@ require 'conn.php';
     <input type="email" class="form-control" id="emp_email" placeholder="name@example.com" name="emp_email" required onkeyup="checkDuplicateEmail()">
     <label for="emp_email">Email address</label>
     <div class="invalid-feedback">
+    Please type a valid email address (eg. test@gmail.com).
     </div>
     </div>
 
@@ -180,7 +181,7 @@ require 'conn.php';
 </div>
 
 <br>
- <button type="submit" id="submitBtn" class="btn btn-primary" onclick="validateForm()">Submit</button>
+ <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
 
 
 </section> 
@@ -198,6 +199,8 @@ require 'conn.php';
 
 </div></div></div>
 </form>
+
+
 
 </main>
 
@@ -221,36 +224,11 @@ require 'conn.php';
       form.classList.add('was-validated')
     }, false)
   })
-})()</script>
+})()
 
-<script>
-function checkDuplicateEmail() {
-    const emailInput = $('#emp_email');
-    const email = emailInput.val();
 
-    if (email.trim() !== '') {
-        $.post('check_duplicate_email.php', { emp_email: email }, function (response) {
-            const trimmedResponse = response.trim().toLowerCase();
 
-            // Update the emailFeedback div with the response
-            $('#emailFeedback').html(trimmedResponse);
-
-            // Determine whether the email is valid or invalid
-            const isValidEmail = !trimmedResponse.includes('invalid');
-
-            // Update the Bootstrap validation styling
-            emailInput.removeClass('is-valid is-invalid').addClass(isValidEmail ? 'is-valid' : 'is-invalid');
-
-            // Update the invalid feedback message
-            const invalidFeedback = $('#emp_email').siblings('.invalid-feedback');
-            invalidFeedback.html(isValidEmail ? 'Please type a valid email address (eg. email@gmail.com)' : response);
-        });
-    } else {
-        // Clear the emailFeedback div and remove the 'is-valid' and 'is-invalid' classes
-        $('#emailFeedback').html('');
-        emailInput.removeClass('is-valid is-invalid');
-    }
-}
 
 
 </script>
+

@@ -1,24 +1,34 @@
 <?php
 require 'conn.php';
 
-if (isset($_POST['emp_email'])) {
-    $email = $_POST['emp_email'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $emp_email = filter_input(INPUT_POST, "emp_email", FILTER_VALIDATE_EMAIL);
 
-    // Perform a query to check for duplicate email
-    $query = "SELECT COUNT(*) as count FROM employee WHERE emp_email = :emp_email";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':emp_email', $email);
-    $stmt->execute();
+    $checkDuplicateEmailSql = "SELECT COUNT(*) FROM employee WHERE emp_email = :emp_email";
+    $checkDuplicateEmailStmt = $pdo->prepare($checkDuplicateEmailSql);
+    $checkDuplicateEmailStmt->bindParam(':emp_email', $emp_email);
 
-    // Fetch the result
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($checkDuplicateEmailStmt->execute()) {
+        $duplicateCount = $checkDuplicateEmailStmt->fetchColumn();
 
-    // Check if the email already exists
-    if ($result['count'] > 0) {
-        echo 'Invalid email. This email is already in use.';
+        if ($duplicateCount > 0) {
+            // Duplicate email found
+            echo 'duplicate';
+            exit();
+        } else {
+            // Email is not duplicate
+            echo 'not_duplicate';
+            exit();
+        }
     } else {
-        echo 'Valid email. This email is available.';
+        // Error checking duplicate email
+        echo 'error';
+        exit();
     }
+} else {
+    // Invalid request method
+    echo 'error';
+    exit();
 }
 ?>
 

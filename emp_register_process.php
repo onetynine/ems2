@@ -3,14 +3,38 @@ require 'conn.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emp_admin_access = isset($_POST["emp_admin_access"]) ? 1 : 0;
+
     // Validate and sanitize user input
-    $emp_name = filter_input(INPUT_POST, "emp_name", FILTER_SANITIZE_STRING);
+    // Retrieve and validate other fields
+    $emp_name = filter_input(INPUT_POST, "emp_name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $emp_email = filter_input(INPUT_POST, "emp_email", FILTER_VALIDATE_EMAIL);
-    $emp_designation = filter_input(INPUT_POST, "emp_designation", FILTER_SANITIZE_STRING);
+    $emp_designation = filter_input(INPUT_POST, "emp_designation", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
     // ... (similar validation for other fields)
 
     if (!$emp_name || !$emp_email || !$emp_designation /* Add other validation conditions */) {
-        echo "Invalid input. Please check your form.";
+        echo "<script>alert('Invalid input. Please check your form.');</script>";
+        exit();
+    }
+
+    // Check for duplicate email
+    $checkDuplicateEmailSql = "SELECT COUNT(*) FROM employee WHERE emp_email = :emp_email";
+    $checkDuplicateEmailStmt = $pdo->prepare($checkDuplicateEmailSql);
+    $checkDuplicateEmailStmt->bindParam(':emp_email', $emp_email);
+
+    if ($checkDuplicateEmailStmt->execute()) {
+        $duplicateCount = $checkDuplicateEmailStmt->fetchColumn();
+
+        if ($duplicateCount > 0) {
+        // Duplicate email found, output an error message
+        echo "<script>alert('Error: This email is already in use. Please choose a different email address.'); history.back();</script>";
+        exit();
+
+
+        }
+    } else {
+        // Error checking duplicate email
+        echo "<script>alert('Error checking duplicate email: " . $checkDuplicateEmailStmt->errorInfo()[2] . "'); history.back();</script>";
         exit();
     }
 
@@ -40,25 +64,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':emp_admin_access', $emp_admin_access);
         $stmt->bindParam(':emp_al', $emp_al);
         $stmt->bindParam(':emp_mc', $emp_mc);
-
-
         // ... (similar binding for other parameters)
-
         if ($stmt->execute()) {
             // Registration successful
-            header("Location: registration_success.php");
+            $_SESSION['registration_success'] = true;
+            $_SESSION['emp_id'] = $pdo->lastInsertId();
+            echo '<script>window.location.href = "emp_register_success.php";</script>';
             exit();
         } else {
             // Registration failed
-            echo "Error: " . $stmt->errorInfo()[2];
+            $_SESSION['registration_error'] = $stmt->errorInfo()[2];
+            echo '<script>window.location.href = "emp_register.php";</script>';
+            exit();
         }
-    } else {
-        // Statement preparation failed
-        echo "Error in preparing the statement.";
-    }
-} else {
-    // Redirect to the registration form if the form is not submitted
-    header("Location: emp_register.php");
-    exit();
-}
+        
+    }}
 ?>
