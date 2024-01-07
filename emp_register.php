@@ -1,7 +1,19 @@
 <?php
 require 'conn.php';
-?>
 
+// getting the data for select options
+try {
+    // Fetch departments from the database
+    $departmentQuery = "SELECT * FROM opt_department";
+    $departmentResult = $pdo->query($departmentQuery);
+
+    // Fetch contract types from the database
+    $contractTypeQuery = "SELECT * FROM opt_contract_type";
+    $contractTypeResult = $pdo->query($contractTypeQuery);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+?>
         
        <?php include "header.php"; 
        ?>
@@ -84,23 +96,51 @@ require 'conn.php';
         <div class="form-floating mb-3">
         <select class="form-select" id="empDepartment" name="emp_department" required>
             <option value="" selected disabled>Select Department</option>
-            <option value="option2">Information Technology</option>
-            <option value="option3">Operation</option>
-            <option value="option4">Logistic</option>
+            <?php
+            try {
+                // Fetch departments from the database
+                $departmentQuery = "SELECT * FROM opt_department";
+                $departmentResult = $pdo->query($departmentQuery);
+
+                while ($department = $departmentResult->fetch(PDO::FETCH_ASSOC)) {
+                    if (isset($department['opt_department_id'], $department['opt_department_name'])) {
+            ?>
+                        <option value="<?php echo $department['opt_department_id']; ?>"><?php echo $department['opt_department_name']; ?></option>
+            <?php
+                    }
+                }
+            } catch (PDOException $e) {
+                echo "Query failed: " . $e->getMessage();
+            }
+            ?>
         </select>
-            <label for="floatingInput">Department</label>
+            <label for="empDepartment">Department</label>
         </div>
 
         <div class="form-floating mb-3">
-        <select class="form-select" id="emp_contract_type" name="emp_contract_type" required>
-            <option value="" selected disabled>Select Contract Type</option>
-            <option value="option2">Full Time</option>
-            <option value="option3">Part Time</option>
-            <option value="option4">Contract Based</option>
-            <option value="option5">Internship</option>
+        <select class="form-select" id="empDepartment" name="emp_department" required>
+            <option value="" selected disabled>Select Department</option>
+            <?php
+            try {
+                // Fetch departments from the database
+                $contract_type_query = "SELECT * FROM opt_contract_type";
+                $contract_type_result = $pdo->query($contract_type_query);
+
+                while ($contract_type = $contract_type_result->fetch(PDO::FETCH_ASSOC)) {
+                    if (isset($contract_type['opt_contract_type_id'], $contract_type['opt_contract_type_name'])) {
+            ?>
+                        <option value="<?php echo $contract_type['opt_contract_type_id']; ?>"><?php echo $contract_type['opt_contract_type_name']; ?></option>
+            <?php
+                    }
+                }
+            } catch (PDOException $e) {
+                echo "Query failed: " . $e->getMessage();
+            }
+            ?>
         </select>
-            <label for="floatingInput">Contract Type</label>
+            <label for="contract_type">Contract Type</label>
         </div>
+
         
         <!-- Same row, two columns. Source: https://getbootstrap.com/docs/5.3/forms/floating-labels/ -->
         <div class="row g-2"> 

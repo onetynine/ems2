@@ -61,10 +61,8 @@ if (isset($_GET['emp_id'])) {
                 <h5 class="card-text"><?php echo $user['emp_designation'] ?></h5>
                 <p>Connect with me:</p>
                 <a href="https://github.com" class="fa fa-github p-2"> </a>
-                <i class="fa fa-facebook p-2"> </i>
-                <i class="fa fa-twitter p-2"> </i>
-                <i class="fa fa-linkedin p-2"> </i>
-                <i class="fa fa-whatsapp p-2"> </i>
+                <a href="https://linkedin.com" class="fa fa-linkedin p-2"> </a>
+                <a href="https://twitter.com" class="fa fa-twitter p-2"> </a>
             </div>
         </div>
         <style>

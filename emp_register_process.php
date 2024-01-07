@@ -1,5 +1,6 @@
 <?php
 require 'conn.php';
+include 'header.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emp_admin_access = isset($_POST["emp_admin_access"]) ? 1 : 0;
@@ -9,7 +10,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emp_name = filter_input(INPUT_POST, "emp_name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $emp_email = filter_input(INPUT_POST, "emp_email", FILTER_VALIDATE_EMAIL);
     $emp_designation = filter_input(INPUT_POST, "emp_designation", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
+    $emp_department = filter_input(INPUT_POST, "emp_department", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $emp_contract_type = filter_input(INPUT_POST, "emp_contract_type", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $emp_start_date = filter_input(INPUT_POST, "emp_start_date", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $emp_status =filter_input(INPUT_POST, "emp_status", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $emp_nric = filter_input(INPUT_POST, "emp_nric", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $emp_phone = filter_input(INPUT_POST, "emp_phone", FILTER_SANITIZE_NUMBER_INT);
     // ... (similar validation for other fields)
 
     if (!$emp_name || !$emp_email || !$emp_designation /* Add other validation conditions */) {
@@ -64,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':emp_admin_access', $emp_admin_access);
         $stmt->bindParam(':emp_al', $emp_al);
         $stmt->bindParam(':emp_mc', $emp_mc);
-        // ... (similar binding for other parameters)
+        
         if ($stmt->execute()) {
             // Registration successful
             $_SESSION['registration_success'] = true;
