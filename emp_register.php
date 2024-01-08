@@ -142,7 +142,6 @@ try {
         </div>
 
         
-        <!-- Same row, two columns. Source: https://getbootstrap.com/docs/5.3/forms/floating-labels/ -->
         <div class="row g-2"> 
             <div class="col-md">
                 <div class="form-floating mb-3">
@@ -153,8 +152,27 @@ try {
 
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="status" name="emp_status" required>
-            <label for="floatingInput">Status</label>
+        <select class="form-select" id="empStatus" name="emp_status" required>
+            <option value="" selected disabled>Select Status</option>
+            <?php
+            try {
+                // Fetch departments from the database
+                $status_query = "SELECT * FROM opt_status";
+                $status_result = $pdo->query($status_query);
+
+                while ($status = $status_result->fetch(PDO::FETCH_ASSOC)) {
+                    if (isset($status['opt_status_id'], $status['opt_status_name'])) {
+            ?>
+                        <option value="<?php echo $status['opt_status_id']; ?>"><?php echo $status['opt_status_name']; ?></option>
+            <?php
+                    }
+                }
+            } catch (PDOException $e) {
+                echo "Query failed: " . $e->getMessage();
+            }
+            ?>
+        </select>
+            <label for="contract_type">Status</label>
         </div>
 </div>
 </div>

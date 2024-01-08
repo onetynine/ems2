@@ -25,6 +25,11 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <h3>Settings</h3><hr>
 
 <p class="h4">Contract Type</p>
+<br>
+<div class="">
+<button class="btn btn-primary btn-sm" href="emp_department_add.php"><i class="fa fa-plus"></i> Add Contract Type</button>
+</div>
+
 <div class="table mt-4">
         <table id="info" class="table table-hover table-responsive" style="width: 100%">
             <thead>
