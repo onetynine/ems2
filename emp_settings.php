@@ -27,9 +27,13 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
   check with vendor every time they need to set it up, or redo.
 </p>
 
+
+<div class="card">
+  <div class="card-body">
 <form>
   <h5 class="brand">Required Fields (Registration Form)</h5><br>
   <h6>Personal Info</h6>
+
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" name="emp_admin_access" id="emp_admin_access">
   <label class="form-check-label" for="emp_admin_access">Name</label>
@@ -70,7 +74,8 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 </form>
-
+</div>
+</div>
 
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
       <div class="col d-flex align-items-start">
