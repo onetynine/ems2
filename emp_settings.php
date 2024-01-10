@@ -31,7 +31,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="card">
   <div class="card-body">
 <form>
-  <h5 class="brand">Required Fields (Registration Form)</h5><br>
+  <h5 class="brand">Required Fields (Registration Form)</h5><hr>
   <h6>Personal Info</h6>
 
 <div class="form-check form-switch">
@@ -75,36 +75,44 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </form>
 </div>
-</div>
+</div><br>
 
+      <div class="card">
+      <div class="card-body"> 
+        <h5 class="brand">More Options</h5><hr>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-      <div class="col d-flex align-items-start">
-        <div>
-          <h5 class="text-body-emphasis">Department</h5>
+          
+      <div class="row d-flex align-items-start">
+        <div class="text-center">
+          <i class="fa-solid fa-people-group fa-2xl"></i>
+          <h5 class="text-body-emphasis m-2">Department</h5>
           <a href="emp_settings_department.php" class="btn btn-primary "><i class="fa fa-gears"></i>
           Modify
           </a>
         </div>
       </div>
-      <div class="col d-flex align-items-start">
-        <div>
-          <h5 class="text-body-emphasis">Contract Type</h5>
-          <a href="emp_settings_contract_type.php" class="btn btn-primary "><i class="fa fa-gears"></i>
+      <div class="row d-flex align-items-start">
+        <div class="text-center">
+          <i class="fa-solid fa-file-signature fa-2xl"></i>
+          <h5 class="text-body-emphasis m-2">Contract Type</h5>
+          <a href="emp_settings_department.php" class="btn btn-primary "><i class="fa fa-gears"></i>
           Modify
           </a>
+     
         </div>
       </div>
-      <div class="col d-flex align-items-start">
-        <div>
-          <h5 class="text-body-emphasis">Status</h5>
-          <a href="emp_settings_status.php" class="btn btn-primary "><i class="fa fa-gears"></i>
+      <div class="row d-flex align-items-start">
+        <div class="text-center">
+          <i class="fa-solid fa-people-group fa-2xl"></i>
+          <h5 class="text-body-emphasis m-2">Status</h5>
+          <a href="emp_settings_department.php" class="btn btn-primary "><i class="fa fa-gears"></i>
           Modify
           </a>
         </div>
       </div>
     </div>
-
-
+    </div>
+</div>
 
 <?php 
 
