@@ -13,6 +13,14 @@ try {
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
+
+$sqlRequiredFields = "SELECT * FROM required_fields";
+$stmtRequiredFields = $pdo->prepare($sqlRequiredFields);
+$stmtRequiredFields->execute();
+
+// Fetch the data from the query
+$rowRequiredFields = $stmtRequiredFields->fetch(PDO::FETCH_ASSOC);
+
 ?>
         
        <?php include "header.php"; 
@@ -39,25 +47,33 @@ try {
   </div>
 <div class="card-body">
 <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="emp_name" placeholder="emp_name" name="emp_name" required>       
-        <label for="emp_name">Name</label>
+        <input type="text" class="form-control" id="emp_name" placeholder="emp_name" name="emp_name"      
+        <?php 
+        echo ($rowRequiredFields['require_name'] == 1) ? 'required' : '';
+        ?>
+        ><label for="emp_name">Name</label>
         <div class="invalid-feedback">
         Please type a valid name.
         </div>
     </div>
 
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="emp_nric" placeholder="NRIC" name="emp_nric" required>   
-        <label for="emp_nric">NRIC</label>
+        <input type="text" class="form-control" id="emp_nric" placeholder="NRIC" name="emp_nric"
+        <?php 
+        echo ($rowRequiredFields['require_nric'] == 1) ? 'required' : '';
+        ?>   
+        ><label for="emp_nric">NRIC</label>
         <div class="invalid-feedback">
         Please type a valid IC Number (eg. 880818-08-8888).
         </div>
     </div>
 
     <div class="form-floating mb-3">
-        <input type="tel" class="form-control" id="emp_phone" placeholder="phone" name="emp_phone" required>
-        <label for="emp_phone">Phone</label>
-        
+        <input type="tel" class="form-control" id="emp_phone" placeholder="phone" name="emp_phone"
+        <?php 
+        echo ($rowRequiredFields['require_phone'] == 1) ? 'required' : '';
+        ?>
+        ><label for="emp_phone">Phone</label>      
     </div>
   
     <div class="form-floating mb-3">
@@ -90,11 +106,18 @@ try {
   </div>
 <div class="card-body">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" required id="floatingInput" placeholder="emp_designation" name="emp_designation">
-            <label for="floatingInput">Designation</label>
+            <input type="text" class="form-control" required id="floatingInput" placeholder="emp_designation" name="emp_designation"
+            <?php 
+            echo ($rowRequiredFields['require_designation'] == 1) ? 'required' : '';
+            ?>
+            ><label for="floatingInput">Designation</label>
         </div>
         <div class="form-floating mb-3">
-        <select class="form-select" id="empDepartment" name="emp_department" required>
+        <select class="form-select" id="empDepartment" name="emp_department"    
+        <?php 
+         echo ($rowRequiredFields['require_department'] == 1) ? 'required' : '';
+            ?>
+            >
             <option value="" selected disabled>Select Department</option>
             <?php
             try {
@@ -118,8 +141,12 @@ try {
         </div>
 
         <div class="form-floating mb-3">
-        <select class="form-select" id="empDepartment" name="emp_department" required>
-            <option value="" selected disabled>Select Department</option>
+        <select class="form-select" id="empDepartment" name="emp_contract_type"
+        <?php 
+            echo ($rowRequiredFields['require_contract_type'] == 1) ? 'required' : '';
+            ?>
+            >
+            <option value="" selected disabled>Select Contract Type</option>
             <?php
             try {
                 // Fetch departments from the database
@@ -152,7 +179,11 @@ try {
 
         </div>
         <div class="form-floating mb-3">
-        <select class="form-select" id="empStatus" name="emp_status" required>
+        <select class="form-select" id="empStatus" name="emp_status"
+        <?php 
+            echo ($rowRequiredFields['require_status'] == 1) ? 'required' : '';
+            ?>
+            >
             <option value="" selected disabled>Select Status</option>
             <?php
             try {
