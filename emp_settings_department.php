@@ -22,13 +22,14 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
        
        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">  <br> 
 <?php
+// 
 if (isset($_GET['success']) && $_GET['success'] == 'true') {
     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
             Update successful!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>';
   }
-
+//
 if (isset($_GET['duplicate']) && $_GET['duplicate'] == 'true') {
     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
             Uh-oh. You already have this department! Try again.

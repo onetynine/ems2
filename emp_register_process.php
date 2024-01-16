@@ -11,10 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emp_contract_type = isset($_POST["emp_contract_type"]) ? $_POST["emp_contract_type"] : null;
     $emp_start_date = isset($_POST["emp_start_date"]) ? $_POST["emp_start_date"] : null;
     $emp_status = isset($_POST["emp_status"]) ? $_POST["emp_status"] : null;
-    $emp_nric = isset($_POST["emp_nric"]) ? $_POST["emp_nric"] : null;
 
-
-    // Validate and sanitize user input
     // Retrieve and validate other fields
     $emp_name = filter_input(INPUT_POST, "emp_name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $emp_email = filter_input(INPUT_POST, "emp_email", FILTER_VALIDATE_EMAIL);
@@ -23,15 +20,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emp_contract_type = filter_input(INPUT_POST, "emp_contract_type", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $emp_start_date = filter_input(INPUT_POST, "emp_start_date", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $emp_status =filter_input(INPUT_POST, "emp_status", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $emp_nric = filter_input(INPUT_POST, "emp_nric", FILTER_SANITIZE_NUMBER_INT);
 
-// Validate and sanitize phone number
+// Validation & Sanitization for Phone
 $emp_phone = filter_input(INPUT_POST, "emp_phone", FILTER_SANITIZE_NUMBER_INT);
 if ($emp_phone === "") {
     // Allow empty phone number, set it to NULL
     $emp_phone = null;
 } elseif (!ctype_digit($emp_phone)) {
     echo "<script>alert('Error: Invalid phone number format.'); history.back();</script>";
+    exit();
+}
+
+// Validation & Sanitization for NRIC
+$emp_nric = filter_input(INPUT_POST, "emp_nric", FILTER_SANITIZE_NUMBER_INT);
+if ($emp_nric === "") {
+    // Allow empty phone number, set it to NULL
+    $emp_nric = null;
+} elseif (!ctype_digit($emp_nric)) {
+    echo "<script>alert('Error: Invalid IC number format.'); history.back();</script>";
     exit();
 }
 
