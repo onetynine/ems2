@@ -4,6 +4,15 @@ include 'header.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emp_admin_access = isset($_POST["emp_admin_access"]) ? 1 : 0;
+    $emp_name = isset($_POST["emp_name"]) ? $_POST["emp_name"] : null;
+    $emp_email = isset($_POST["emp_email"]) ? $_POST["emp_email"] : null;
+    $emp_designation = isset($_POST["emp_designation"]) ? $_POST["emp_designation"] : null;
+    $emp_department = isset($_POST["emp_department"]) ? $_POST["emp_department"] : null;
+    $emp_contract_type = isset($_POST["emp_contract_type"]) ? $_POST["emp_contract_type"] : null;
+    $emp_start_date = isset($_POST["emp_start_date"]) ? $_POST["emp_start_date"] : null;
+    $emp_status = isset($_POST["emp_status"]) ? $_POST["emp_status"] : null;
+    $emp_nric = isset($_POST["emp_nric"]) ? $_POST["emp_nric"] : null;
+
 
     // Validate and sanitize user input
     // Retrieve and validate other fields
@@ -14,14 +23,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emp_contract_type = filter_input(INPUT_POST, "emp_contract_type", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $emp_start_date = filter_input(INPUT_POST, "emp_start_date", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $emp_status =filter_input(INPUT_POST, "emp_status", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $emp_nric = filter_input(INPUT_POST, "emp_nric", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $emp_phone = filter_input(INPUT_POST, "emp_phone", FILTER_SANITIZE_NUMBER_INT);
-    // ... (similar validation for other fields)
+    $emp_nric = filter_input(INPUT_POST, "emp_nric", FILTER_SANITIZE_NUMBER_INT);
 
-    if (!$emp_name || !$emp_email || !$emp_designation /* Add other validation conditions */) {
-        echo "<script>alert('Invalid input. Please check your form.');</script>";
-        exit();
-    }
+// Validate and sanitize phone number
+$emp_phone = filter_input(INPUT_POST, "emp_phone", FILTER_SANITIZE_NUMBER_INT);
+if ($emp_phone === "") {
+    // Allow empty phone number, set it to NULL
+    $emp_phone = null;
+} elseif (!ctype_digit($emp_phone)) {
+    echo "<script>alert('Error: Invalid phone number format.'); history.back();</script>";
+    exit();
+}
+
 
     // Check for duplicate email
     $checkDuplicateEmailSql = "SELECT COUNT(*) FROM employee WHERE emp_email = :emp_email";

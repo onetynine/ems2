@@ -106,7 +106,7 @@ $rowRequiredFields = $stmtRequiredFields->fetch(PDO::FETCH_ASSOC);
   </div>
 <div class="card-body">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" required id="floatingInput" placeholder="emp_designation" name="emp_designation"
+            <input type="text" class="form-control" id="floatingInput" placeholder="emp_designation" name="emp_designation"
             <?php 
             echo ($rowRequiredFields['require_designation'] == 1) ? 'required' : '';
             ?>
@@ -228,7 +228,10 @@ $rowRequiredFields = $stmtRequiredFields->fetch(PDO::FETCH_ASSOC);
       <p class="card-text">Set amount of annual leave.</p>
         <div class="col-md">
             <div class="form-floating mb-3">
-                    <input required type="number" class="form-control" id="floatingInput" placeholder="emp_al" name="emp_al">
+                    <input type="number" class="form-control" id="floatingInput" placeholder="emp_al" name="emp_al"
+                    <?php 
+                    echo ($rowRequiredFields['require_al'] == 1) ? 'required' : '';
+                    ?> >          
                     <label for="floatingInput">Current Annual Leave (in days)</label>
             </div>
         </div>
@@ -244,7 +247,10 @@ $rowRequiredFields = $stmtRequiredFields->fetch(PDO::FETCH_ASSOC);
 
         <div class="col-md">
             <div class="form-floating mb-3">
-                    <input required type="number" class="form-control" id="floatingInput" placeholder="emp_mc" name="emp_mc">
+                    <input type="number" class="form-control" id="floatingInput" placeholder="emp_mc" name="emp_mc"
+                    <?php 
+                    echo ($rowRequiredFields['require_mc'] == 1) ? 'required' : '';
+                    ?> >
                     <label for="floatingInput">Current Medical Leave (in days)</label>
             </div>
             <p class="card-text"><small class="text-body-secondary">
