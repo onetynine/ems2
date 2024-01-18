@@ -7,7 +7,7 @@ function checkLoggedIn() {
         header('Location: login.php'); // Redirect to login page if not logged in
         exit();
     }
-
+    
     // // Check for inactivity timeout
     // $inactiveTimeout = 10; // 30 minutes (in seconds)
     // $currentTime = time();
