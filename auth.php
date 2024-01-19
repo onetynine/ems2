@@ -1,6 +1,6 @@
 <?php
 function checkLoggedIn() {
-    session_start();
+    session_start(); 
 
     // Check if user is logged in
     if (!isset($_SESSION['emp_email'])) {

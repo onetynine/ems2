@@ -1,6 +1,6 @@
 <?php
 require 'conn.php';
-
+session_start();
 
 $errors = []; // Initialize an array to store errors
 
