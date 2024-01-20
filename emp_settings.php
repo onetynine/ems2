@@ -147,12 +147,12 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
           <div class="card">  
             <span class="text-bg-primary">Active: 4</span><br><br>
           <i class="fa-solid fa-file-signature fa-2xl"></i><br>
-          <h5 class="text-body-emphasis m-2">Department</h5>
+          <h5 class="text-body-emphasis m-2">Contract Type</h5>
           <div class="m-2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed sequi ipsa aspernatur nobis eos 
             voluptatibus soluta pariatur fuga, magni repellat!
           </div>
-          <a href="emp_settings_department.php" class="btn btn-primary btn-sm m-4">
+          <a href="emp_settings_contract_type.php" class="btn btn-primary btn-sm m-4">
           
           <i class="fa fa-gears"></i>
           Modify  
@@ -165,12 +165,12 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
           <div class="card">  
             <span class=" text-bg-primary">Active: 4</span><br><br>
           <i class="fa-solid fa-file-signature fa-2xl"></i><br>
-          <h5 class="text-body-emphasis m-2">Department</h5>
+          <h5 class="text-body-emphasis m-2">Status</h5>
           <div class="m-2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed sequi ipsa aspernatur nobis eos 
             voluptatibus soluta pariatur fuga, magni repellat!
           </div>
-          <a href="emp_settings_department.php" class="btn btn-primary btn-sm m-4">
+          <a href="emp_settings_status.php" class="btn btn-primary btn-sm m-4">
            
           <i class="fa fa-gears"></i>
           Modify  

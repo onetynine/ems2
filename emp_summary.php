@@ -13,8 +13,45 @@ $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<!-- Modal -->
+<div class="modal fade" id="confirmdelete" tabindex="-1" aria-labelledby="confirmdelete" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="confirmdelete">Confirm Delete</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="emp_settings_department_delete.php" method="POST" class="needs-validation">
+            <div class="card-title">Are you sure to remove this user permanently?</div>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-book"></i> Move to Archive</button>
+        <button type="submit" class="btn btn-danger"><i class="fa fa-minus"></i> Delete Employee</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
 
-       <?php include "header.php"; ?>
+       <?php include "header.php"; 
+       if (isset($_GET['success']) && $_GET['success'] == 'true') {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                Update successful!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+      }
+    //
+    if (isset($_GET['duplicate']) && $_GET['duplicate'] == 'true') {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Uh-oh. You already have this department! Try again.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+      }
+    
+      ?>
+       
        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
 
@@ -68,7 +105,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a href="emp_profile_edit.php?emp_id=<?php echo $user['emp_id']; ?>" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                     <i class="bi bi-pencil"></i>     <span class="visually-hidden"></span>
                     </a>
-                    <a href="emp_profile_delete.php?emp_id=<?php echo $user['emp_id']; ?>" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                    <a data-bs-toggle="modal" data-bs-target="#confirmdelete" href="emp_profile_delete.php?emp_id=<?php echo $user['emp_id']; ?>" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#confirmdelete" data-bs-placement="top" title="Edit">
                      <i class="bi bi-trash"></i>
                     <span class="visually-hidden"></span>
                     </a>

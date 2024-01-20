@@ -11,7 +11,7 @@ $user_password = "user123";
 ?>
 <form action="login_process.php" method="post" class="">
     <div class="row">
-<div class="col-4 card mx-auto" style="margin-top: 20vh;">
+<div class="col-md-4 card mx-auto" style="margin-top: 20vh;">
 
   <img src="..." class="card-img-top" alt="...">
   <div class="card-body text-center">
@@ -38,11 +38,11 @@ $user_password = "user123";
     <a id="admin-link" href="#" name="admin" class="card-link">Admin</a>
     <a id="employee-link" href="#" name="user" class="card-link">Employee</a>
   </div>
-  
-
 </div>
+
 </form>
-<div class="col-8 card mx-auto w-50 border-0" style="margin-top: 30vh;">
+
+<div class="col-md-4 card mx-auto w-50 border-0" style="margin-top: 30vh;">
   <div class="card-body text-center">
     <h5 class="card-title">EMS</h5>
     <p class="card-text">Hi, welcome to EMS! It stands for Employee Management System. 
@@ -62,11 +62,11 @@ $user_password = "user123";
 
     <div class="card-body">
         <div class="row">
-        <div class="col m-6">
+        <div class="col m-6 mb-3">
                 <a href="#" class="no-link"><i class="fa-solid fa-2xl fa-unlock"></i><br><br>
                 <p>Documentation</p></a>
         </div> 
-        <div class="col m-6">
+        <div class="col m-6 mb-3">
                 <a href="#" class="no-link"><i class="fa-solid fa-2xl fa-unlock"></i><br><br>
                 <p>Hire me. <small>(please)</small></p></a>
         </div>

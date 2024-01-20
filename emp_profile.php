@@ -105,7 +105,7 @@ if (isset($_GET['emp_id'])) {
             <li class="list-group-item"><strong>Start Date:</strong> <?php echo $user['emp_start_date'] ?></li><br>
             <div class="btn-group col-4">
             
-            <button type="button" class="btn btn-sm btn-primary m-2"><i class="fa fa-gear"></i>  Edit Profile</button>
+            <a href="emp_profile_edit.php?emp_id=<?php echo $user['emp_id'];?>" type="button" class="btn btn-sm btn-primary m-2"><i class="fa fa-gear"></i>  Edit Profile</a>
             <button type="button" class="btn btn-sm btn-primary m-2"><i class="fa fa-book"></i>  Archive</button>
             <div class="btn-group col-4" role="group">
             <button type="button" class="btn btn-sm btn-primary m-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -133,7 +133,7 @@ if (isset($_GET['emp_id'])) {
             <li class="list-group-item">Remaining: <?php echo $user['emp_phone'] ?></li>
             <li class="list-group-item">Yearly Entitlement: <?php echo $user['emp_email'] ?></li><br>
             <div class="btn-group col-4">
-            <button type="button" class="btn btn-sm btn-primary m-2"><i class="fa fa-search"></i>  View Leave Details</button>
+            <button href="emp_profile_edit.php?emp_id=<?php echo $user['emp_id'];?>" type="button" class="btn btn-sm btn-primary m-2"><i class="fa fa-search"></i>  View Leave Details</button>
             <button type="button" class="btn btn-sm btn-primary m-2"><i class="fa fa-gear"></i>  Edit Leave Details</button>
             <button type="button" class="btn btn-sm btn-primary m-2"><i class="fa fa-book"></i>  View Leave History</button>
 
