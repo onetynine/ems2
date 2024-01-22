@@ -1,7 +1,7 @@
 <?php
 
 require "conn.php";
-
+include "header.php";
 // Directly query the database for user information
 $sql = "SELECT *
         FROM employee";
@@ -22,20 +22,29 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="emp_settings_department_delete.php" method="POST" class="needs-validation">
-            <div class="card-title">Are you sure to remove this user permanently?</div>
+      <form id="delete-form" action="emp_profile_delete.php" method="post">
+    <div class="card-body">Are you sure to remove this user permanently?</div>
 </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-book"></i> Move to Archive</button>
         <button type="submit" class="btn btn-danger"><i class="fa fa-minus"></i> Delete Employee</button>
+        </form>
       </div>
     </div>
   </div>
 </div>
-</form>
 
-       <?php include "header.php"; 
+<script>
+function setEmpId(empId) {
+    document.getElementById('delete-form').action = 'emp_profile_delete.php?emp_id=' + empId;
+}
+</script>
+
+
+       
+       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><br>
+       <?php  
        if (isset($_GET['success']) && $_GET['success'] == 'true') {
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                 Update successful!
@@ -43,17 +52,14 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
               </div>';
       }
     //
-    if (isset($_GET['duplicate']) && $_GET['duplicate'] == 'true') {
+    if (isset($_GET['delete']) && $_GET['delete'] == 'true') {
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                Uh-oh. You already have this department! Try again.
+                Done delete
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>';
       }
     
       ?>
-       
-       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
 
       <br>
     <h3>Employee</h3><hr>
@@ -105,10 +111,11 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a href="emp_profile_edit.php?emp_id=<?php echo $user['emp_id']; ?>" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                     <i class="bi bi-pencil"></i>     <span class="visually-hidden"></span>
                     </a>
-                    <a data-bs-toggle="modal" data-bs-target="#confirmdelete" href="emp_profile_delete.php?emp_id=<?php echo $user['emp_id']; ?>" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#confirmdelete" data-bs-placement="top" title="Edit">
-                     <i class="bi bi-trash"></i>
-                    <span class="visually-hidden"></span>
+                    <a data-bs-toggle="modal" data-bs-target="#confirmdelete" class="btn btn-primary btn-sm" data-bs-placement="top" title="Delete" onclick="setEmpId(<?php echo $user['emp_id']; ?>)">
+                        <i class="bi bi-trash"></i>
+                        <span class="visually-hidden"></span>
                     </a>
+
                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="More Options">
                     <i class="bi bi-three-dots"></i>
                     <span class="visually-hidden"></span>

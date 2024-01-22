@@ -4,60 +4,29 @@ require 'conn.php';
 if (isset($_GET['emp_id'])) {
   $emp_id = $_GET['emp_id'];
 
-  try{
-$sqlEmp = "SELECT * FROM employee WHERE emp_id = :emp_id";
-$stmtEmp = $pdo->prepare($sqlEmp);
+$sql = "DELETE FROM employee WHERE emp_id = :emp_id";
+$stmt = $pdo->prepare($sql);
 
-$stmtEmp->bindParam(':emp_id', $emp_id);
-$stmtEmp->execute();
+$stmt->bindParam(':emp_id', $emp_id);
 
-// Fetch the data from the query
-$user = $stmtEmp->fetch(PDO::FETCH_ASSOC);
-
-if ($user) {
-} else {
-  // Handle the case when user data is not found
-  throw new Exception("User not found");
-}
-} catch (Exception $e) {
-// Log the error or display a user-friendly message
-echo "Error: {$e->getMessage()}";
-exit();
-}
-} else {
-// Handle the case when email parameter is not set
-echo "Id parameter is missing";
-exit();
-}
+  // Execute the delete query
+  if ($stmt->execute()) {
+      // If the delete is successful, redirect and display a success message
+      header("Location: " . $_SERVER['HTTP_REFERER'] . "?delete=true");
+      exit();
+  } else {
+      // If all else fails, return to the shore
+      echo '<script>history.back()</script>';
+      
+  }
+  }
 
 ?>
         
        <?php include "header.php"; 
        ?>
-       
-       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-  <br> 
-     
-<h3>Edit Profile</h3><hr>
-<form action="emp_delete_process.php" method="post" class="needs-validation" novalidate>
 
-<?php 
-
-?>
-
-<!-- Personal Info Section --> 
-<section class="text-start row setup-content" id="step-1">
-<div class="tab">
-    <div class="card" style="width: 100%;">
-  <div class="card-body">
-    <h5 class="card-title">Personal Info</h5>
-    <p class="card-text">Let's start with some basic info.</p>
-  </div>
-<div class="card-body">
-</div>
-
-</section><br>
      
 </div></div>
 

@@ -1,6 +1,7 @@
 <?php
 require 'conn.php';
 
+
 // getting the data for select options
 try {
     // Fetch departments from the database
@@ -53,14 +54,23 @@ exit();
 ?>
         
        <?php include "header.php"; 
+ 
+      
        ?>
        
-       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-  <br> 
+       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"> <br> 
+        <?php
+              if (isset($_GET['success']) && $_GET['success'] == 'true') {
+                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Update successful!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>';
+              }
+        ?>
+ 
      
 <h3>Edit Profile</h3><hr>
-<form action="emp_edit_process.php" method="post" class="needs-validation" novalidate>
+<form action="emp_profile_process.php" method="post" class="needs-validation" novalidate>
 
 <?php 
 
@@ -134,6 +144,7 @@ exit();
     <p class="card-text">Please fill up staff information correctly.</p>
   </div>
 <div class="card-body">
+  <input type="hidden" name="emp_id" value="<?php echo $user["emp_id"];?>" >
         <div class="form-floating mb-3">
             <input value="<?php echo $user["emp_designation"];?>" type="text" class="form-control" id="floatingInput" placeholder="emp_designation" name="emp_designation"
             <?php 
@@ -147,7 +158,7 @@ exit();
          echo ($rowRequiredFields['require_department'] == 1) ? 'required' : '';
             ?>
             >
-            <option value="" selected disabled>Select Department</option>
+            <option value="<?php echo $user["emp_department"];?>" selected disabled><?php echo $user["emp_department"];?></option>
             <?php
             try {
                 // Fetch departments from the database
@@ -157,7 +168,7 @@ exit();
                 while ($department = $departmentResult->fetch(PDO::FETCH_ASSOC)) {
                     if (isset($department['opt_department_id'], $department['opt_department_name'])) {
             ?>
-                        <option value="<?php echo $department['opt_department_id']; ?>"><?php echo $department['opt_department_name']; ?></option>
+                        <option value="<?php echo $department['opt_department_name']; ?>"><?php echo $department['opt_department_name']; ?></option>
             <?php
                     }
                 }
@@ -175,7 +186,7 @@ exit();
             echo ($rowRequiredFields['require_contract_type'] == 1) ? 'required' : '';
             ?>
             >
-            <option value="" selected disabled>Select Contract Type</option>
+            <option value="<?php echo $user["emp_contract_type"];?>" selected><?php echo $user["emp_contract_type"];?></option>
             <?php
             try {
                 // Fetch departments from the database
@@ -185,7 +196,7 @@ exit();
                 while ($contract_type = $contract_type_result->fetch(PDO::FETCH_ASSOC)) {
                     if (isset($contract_type['opt_contract_type_id'], $contract_type['opt_contract_type_name'])) {
             ?>
-                        <option value="<?php echo $contract_type['opt_contract_type_id']; ?>"><?php echo $contract_type['opt_contract_type_name']; ?></option>
+                        <option value="<?php echo $contract_type['opt_contract_type_name']; ?>"><?php echo $contract_type['opt_contract_type_name']; ?></option>
             <?php
                     }
                 }
@@ -201,19 +212,19 @@ exit();
         <div class="row g-2"> 
             <div class="col-md">
                 <div class="form-floating mb-3">
-                    <input value="<?php echo $user["emp_contract_type"];?>" type="date"  class="form-control" value="2020-01-01" id="floatingInput" placeholder="$" name="emp_start_date">
+                    <input value="<?php echo $user["emp_start_date"];?>" type="date"  class="form-control" id="floatingInput" placeholder="$" name="emp_start_date">
                     <label for="floatingInput">Start Date</label>
                 </div>
             </div>
 
         </div>
         <div class="form-floating mb-3">
-        <select value="<?php echo $user["emp_status"];?>" class="form-select" id="empStatus" name="emp_status"
+        <select  class="form-select" id="empStatus" name="emp_status"
         <?php 
             echo ($rowRequiredFields['require_status'] == 1) ? 'required' : '';
             ?>
             >
-            <option value="" selected disabled>Select Status</option>
+            <option value="<?php echo $user["emp_status"];?>" selected><?php echo $user["emp_status"];?></option>
             <?php
             try {
                 // Fetch departments from the database
@@ -223,7 +234,7 @@ exit();
                 while ($status = $status_result->fetch(PDO::FETCH_ASSOC)) {
                     if (isset($status['opt_status_id'], $status['opt_status_name'])) {
             ?>
-                        <option value="<?php echo $status['opt_status_id']; ?>"><?php echo $status['opt_status_name']; ?></option>
+                        <option value="<?php echo $status['opt_status_name']; ?>"><?php echo $status['opt_status_name']; ?></option>
             <?php
                     }
                 }
