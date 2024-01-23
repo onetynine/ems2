@@ -2,8 +2,6 @@
 require 'conn.php';
 session_start();
 
-$errors = []; // Initialize an array to store errors
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emp_email = $_POST['emp_email'];
     $emp_password = $_POST['emp_password'];
@@ -22,10 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Location: emp_summary.php');
 
         } else {
-            $errors[] = "Invalid password";
+            header('Location: login.php');
         }
-    } else {
-        $errors[] = "User not found";
     }
 }
 ?>

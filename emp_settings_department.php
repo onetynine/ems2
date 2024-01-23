@@ -23,9 +23,9 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">  <br> 
 <?php
 // 
-if (isset($_GET['success']) && $_GET['success'] == 'true') {
+if (isset($_GET['delete']) && $_GET['delete'] == 'true') {
     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Update successful!
+            Your selected department has been deleted.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>';
   }
@@ -75,6 +75,30 @@ if (isset($_GET['duplicate']) && $_GET['duplicate'] == 'true') {
 </div>
 </form>
 
+<!-- Modal for Rename-->
+<div class="modal fade" id="confirmrename" tabindex="-1" aria-labelledby="confirmrename" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="confirmrename">Rename New Department</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="emp_settings_department_rename.php" method="POST" class="needs-validation">
+      <div class="form-floating mb-3">
+      <input required type="text"  class="form-control" value="" id="floatingInput" placeholder="$" name="opt_department_name">
+        <label for="floatingInput">Rename Department   </label>
+      </div>
+</div>
+<div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Rename Department</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
 <!-- Modal for Delete -->
 <div class="modal fade" id="confirmdelete" tabindex="-1" aria-labelledby="confirmdelete" aria-hidden="true">
   <div class="modal-dialog">
@@ -117,11 +141,11 @@ function setDeptId(opt_department_id) {
                     <td><?php echo $user["opt_department_name"]; ?></td>
 
                  <td> 
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Rename">
+                <a type="button" data-bs-toggle="modal" data-bs-target="#confirmrename" class="btn btn-primary btn-sm"  data-bs-placement="top" title="Rename">
                     <i class="fa fa-pen"></i>
                     <span class="visually-hidden"></span>
-                </button>
-                <a data-bs-toggle="modal" onclick="setDeptId(<?php echo $user['opt_department_id']; ?>)" data-bs-target="#confirmdelete" class="btn btn-primary btn-sm" data-bs-placement="top" title="Delete">
+                </a>
+                <a data-bs-toggle="modal" onclick="setDeptId(<?php echo $user['opt_department_id']; ?>)" data-bs-target="#confirmdelete" class="btn btn-danger btn-sm" data-bs-placement="top" title="Delete">
                     <i class="fa fa-minus"></i>
                     <span class="visually-hidden"></span>
                 </a>
