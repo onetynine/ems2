@@ -21,8 +21,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emp_designation = filter_input(INPUT_POST, "emp_designation", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $emp_department = filter_input(INPUT_POST, "emp_department", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $emp_contract_type = filter_input(INPUT_POST, "emp_contract_type", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    
+    $emp_status = filter_input(INPUT_POST, "emp_status", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    // Validation & Sanitization for start date
     $emp_start_date = filter_input(INPUT_POST, "emp_start_date", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $emp_status =filter_input(INPUT_POST, "emp_status", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    if ($emp_start_date === "") {
+        // Allow empty phone number, set it to NULL
+        $emp_start_date = null;
+    } elseif (!ctype_digit($emp_start_date)) {
+        echo "<script>alert('Error: Invalid number format.'); history.back();</script>";
+        exit();
+    }
 
     // Validation & Sanitization for emp_al
     $emp_al = filter_input(INPUT_POST, "emp_al", FILTER_SANITIZE_NUMBER_INT);
@@ -30,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Allow empty phone number, set it to NULL
         $emp_al = null;
     } elseif (!ctype_digit($emp_al)) {
-        echo "<script>alert('Error: Invalid phone number format.'); history.back();</script>";
+        echo "<script>alert('Error: Invalid number format.'); history.back();</script>";
         exit();
     }
     // Validation & Sanitization for emp_mc
@@ -39,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Allow empty phone number, set it to NULL
         $emp_mc = null;
     } elseif (!ctype_digit($emp_mc)) {
-        echo "<script>alert('Error: Invalid phone number format.'); history.back();</script>";
+        echo "<script>alert('Error: Invalid number format.'); history.back();</script>";
         exit();
     }
 

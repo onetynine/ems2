@@ -16,19 +16,65 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         
        <?php include "header.php"; 
+
+
        ?>
        
-       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">  <br> 
+<?php
+// 
+if (isset($_GET['success']) && $_GET['success'] == 'true') {
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Update successful!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+  }
+//
+if (isset($_GET['duplicate']) && $_GET['duplicate'] == 'true') {
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Uh-oh. You already have this department! Try again.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+  }
 
-  <br> 
+  ?>
+
      
 <h3>Settings</h3><hr>
 
 <p class="h4">Contract Type</p>
+
 <br>
-<div class="">
-<button class="btn btn-primary btn-sm" href="emp_department_add.php"><i class="fa fa-plus"></i> Add Contract Type</button>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#newcontracttype"><i class="fa fa-plus"></i>
+  Add New Contract Type
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="newcontracttype" tabindex="-1" aria-labelledby="newcontracttype" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="newcontracttype">Add New Contract Type</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="emp_settings_contract_type_add.php" method="POST" class="needs-validation">
+      <div class="form-floating mb-3">
+      <input required type="text"  class="form-control" value="" id="floatingInput" placeholder="$" name="opt_contract_type_name">
+        <label for="floatingInput">Add Contract Type   </label>
+      </div>
+
 </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add Contract Type</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
 
 <div class="table mt-4">
         <table id="info" class="table table-hover table-responsive" style="width: 100%">
@@ -46,7 +92,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $user["opt_contract_type_name"]; ?></td>
 
                  <td> 
-                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Rename">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Rename">
                     <i class="fa fa-pen"></i>
                     <span class="visually-hidden"></span>
                 </button>

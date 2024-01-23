@@ -72,7 +72,7 @@ function setEmpId(empId) {
         <table id="info" class="table table-hover table-responsive" style="width: 100%">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No.</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Designation</th>
@@ -83,9 +83,11 @@ function setEmpId(empId) {
                 </tr>
             </thead>
             <tbody>
-            <?php foreach ($users as $user): ?>
+            <?php 
+            $counter = 1;
+            foreach ($users as $user): ?>
                 <tr>
-                    <td><?php echo $user["emp_id"]; ?></td>
+                    <td><?php echo $counter; ?></td>
                     <td><?php echo $user["emp_name"]; ?></td>
                     <td><?php echo $user["emp_email"]; ?></td>
                     <td><?php echo $user["emp_designation"]; ?></td>
@@ -125,7 +127,9 @@ function setEmpId(empId) {
 
                     </td>
                 </tr>
-            <?php endforeach; ?>
+            <?php 
+            $counter++;
+            endforeach; ?>
             </tbody>
         </table></div>
                 </div>
