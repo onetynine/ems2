@@ -10,18 +10,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $pdo->prepare("SELECT * FROM employee WHERE emp_email = :emp_email");
     $stmt->bindParam(':emp_email', $emp_email);
     $stmt->execute();
-
     if ($stmt->rowCount() > 0) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    
         // Compare passwords without hashing (for testing only)
         if ($emp_password === $user['emp_password']) {
             $_SESSION['emp_email'] = $user['emp_email'];
-            header('Location: emp_summary.php');
-
+    
+            // Check if the user has admin access
+            if ($user['emp_admin_access'] == 1) {
+                $_SESSION['admin'] = true;
+                header('Location: index.php'); 
+            } else {
+                $_SESSION['admin'] = false;
+                header('Location: index.php');
+            }
         } else {
             header('Location: login.php');
         }
+    } else {
+        header('Location: login.php');
     }
 }
 ?>

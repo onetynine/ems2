@@ -1,14 +1,19 @@
 <?php
-
+session_start();
 require "conn.php";
 
-if (isset($_GET['emp_admin_access']) && $_GET['emp_admin_access'] == '1') {
-    include "header.php";
-    include "index_admin.php";
-  } else{
-    include "header_user.php";
-    include "index_user.php";
+
+if (isset($_SESSION['admin'])) {
+  if ($_SESSION['admin'] === true) {
+      require "index_admin.php";
+
+  } else {
+    require "index_user.php";
+
   }
+} else {
+  echo "admin session variable not set";
+}
 
 
 ?>

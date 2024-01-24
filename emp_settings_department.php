@@ -37,7 +37,15 @@
             </div>';
     }
 
+    if (isset($_GET['rename']) && $_GET['rename'] == 'true') {
+      echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+              Your selected department has been renamed.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+    }
+
     ?>
+ 
 
       
   <h3>Settings</h3><hr>
@@ -164,22 +172,33 @@
                       <td><?php echo $user["opt_department_name"]; ?></td>
 
                   <td> 
+                  <!-- button for rename
+                  Upon clicking rename button, a modal will open and also sends two values to the setDepId2 function
+                  -->  
                   <a 
                   type="button" 
                   data-bs-toggle="modal" 
-                  onclick="setDeptId2(<?php echo $user['opt_department_id']; ?>, '<?php echo $user['opt_department_name']; ?>')" 
+                  onclick="setDeptId2(<?php echo $user['opt_department_id']; ?>, '<?php echo $user['opt_department_name']; ?>')"
                   data-bs-target="#confirmrename" 
                   class="btn btn-primary btn-sm" 
                   data-bs-placement="top" 
                   title="Rename">
-                  <i class="fa fa-pen"></i>
+                  <i class="fa fa-pen"></i> 
                   <span class="visually-hidden"></span>
                   </a>
 
-
-                  <a data-bs-toggle="modal" onclick="setDeptId(<?php echo $user['opt_department_id']; ?>)" data-bs-target="#confirmdelete" class="btn btn-danger btn-sm" data-bs-placement="top" title="Delete">
-                      <i class="fa fa-minus"></i>
-                      <span class="visually-hidden"></span>
+                  <!-- button for delete
+                  Upon clicking delete button, a modal will open and also sends id to the setDepId function.
+                  -->  
+                  <a 
+                  data-bs-toggle="modal" 
+                  onclick="setDeptId(<?php echo $user['opt_department_id']; ?>)" 
+                  data-bs-target="#confirmdelete" 
+                  class="btn btn-danger btn-sm" 
+                  data-bs-placement="top" 
+                  title="Delete">
+                  <i class="fa fa-minus"></i>
+                  <span class="visually-hidden"></span>
                   </a>
               </td>
               </div>
@@ -188,20 +207,10 @@
                       </td>
                   </tr>
               <?php 
-              $counter++; 
+              $counter++; // 
               endforeach; ?>
               </tbody>
           </table>
-
-  <script>
-
-  </script>
-
-
-  <?php 
-
-  ?>
-
 
               
   </div></div>
@@ -222,6 +231,7 @@
   </main>
 
   <script>
+    // DataTable script
   $(document).ready(function() {
       $('#info').DataTable({
           dom: "<'row'<'col-sm-12 d-flex justify-content-between'Bf>>" + 

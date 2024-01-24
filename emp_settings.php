@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'conn.php';
 include "header.php"; 
 

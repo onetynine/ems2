@@ -1,7 +1,10 @@
 <?php
-
+require 'session.php';
 require "conn.php";
 include "header.php";
+/** if admin show all
+ * else show a page to block their access
+ */
 // Directly query the database for user information
 $sql = "SELECT *
         FROM employee";

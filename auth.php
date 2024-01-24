@@ -1,12 +1,14 @@
 <?php
 function checkLoggedIn() {
-    session_start(); 
+   
 
     // Check if user is logged in
     if (!isset($_SESSION['emp_email'])) {
         header('Location: login.php'); // Redirect to login page if not logged in
+        
         exit();
     }
+
     
     // // Check for inactivity timeout
     // $inactiveTimeout = 10; // 30 minutes (in seconds)
