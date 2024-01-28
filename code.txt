@@ -1,0 +1,39 @@
+--------------------------------------------------------------------------------------------------------------------------------
+
+# Login with Session (from login_process.php)
+- within the process of login, we compare if user have admin access from the database
+- in this case, we compare the variable $emp_admin_access against emp_admin_access row in the table
+- refer comments below for further explaination 
+
+if ($user['emp_admin_access'] == 1) {         // condition 1
+    $_SESSION['admin'] = true;                // if admin, we assign $_SESSION['admin'] to true for later use
+    header('Location: index.php');                // once assigned, we send to the user somewhere
+} else {                                      // condition 2
+    $_SESSION['admin'] = false;                   // if not admin, set $_SESSION['admin'] to false for later use
+    header('Location: index.php');                // once assigned, we send to the user somewhere
+}
+
+- in this case, we send both types of users to the same location
+- we use session authorization later to determine what they are allowed to access
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+# Session Authorization (must have every page)
+- ($_SESSION['admin']) comes from previous file usually from login process
+- previous file (or login process) will send assigned data if they have admin access (true or false)
+- is used to check if the session belongs to the admin or the user
+- if session invalid or not detected, we kick 'em out, even when they return to previous page or next page
+- refer comments below for further explaination 
+
+
+if (isset($_SESSION['admin'])) {                            // first, we check if admin value is assigned to a session
+    if ($_SESSION['admin'] == true) {                       // condition 1 - admin
+        // Action if admin is true                          // show admin page (include, etc)
+    } else {                                                // condition 2 - user
+        // Action if admin is true                          // show user page (include, etc)
+    }
+} else {                                                    // condition 3
+    include "logout.php"; // unset and destroy session      // remove session (if any), kick out if session invaid 
+}
+
+--------------------------------------------------------------------------------------------------------------------------------

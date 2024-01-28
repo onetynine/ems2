@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
@@ -247,7 +243,7 @@
 
 <header class="navbar sticky-top flex-md-nowrap p-0" style="background-color: black;" data-bs-theme="dark">
 
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">EMS</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="index.php">EMS</a>
 
   <ul class="navbar-nav flex-row d-md-none">
     <li class="nav-item text-nowrap">
@@ -266,6 +262,7 @@
     <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
   </div>
 </header>
+
 
 <div class="container-fluid">
   <div class="row">

@@ -26,13 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validation & Sanitization for start date
     $emp_start_date = filter_input(INPUT_POST, "emp_start_date", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    if ($emp_start_date === "") {
-        // Allow empty phone number, set it to NULL
-        $emp_start_date = null;
-    } elseif (!ctype_digit($emp_start_date)) {
-        echo "<script>alert('Error: Invalid number format.'); history.back();</script>";
-        exit();
-    }
+ 
 
     // Validation & Sanitization for emp_al
     $emp_al = filter_input(INPUT_POST, "emp_al", FILTER_SANITIZE_NUMBER_INT);
@@ -40,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Allow empty phone number, set it to NULL
         $emp_al = null;
     } elseif (!ctype_digit($emp_al)) {
-        echo "<script>alert('Error: Invalid number format.'); history.back();</script>";
+        echo "<script>alert('Error: Invalid number format. B'); history.back();</script>";
         exit();
     }
     // Validation & Sanitization for emp_mc
@@ -49,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Allow empty phone number, set it to NULL
         $emp_mc = null;
     } elseif (!ctype_digit($emp_mc)) {
-        echo "<script>alert('Error: Invalid number format.'); history.back();</script>";
+        echo "<script>alert('Error: Invalid number format.C'); history.back();</script>";
         exit();
     }
 
@@ -59,7 +53,7 @@ if ($emp_phone === "") {
     // Allow empty phone number, set it to NULL
     $emp_phone = null;
 } elseif (!ctype_digit($emp_phone)) {
-    echo "<script>alert('Error: Invalid phone number format.'); history.back();</script>";
+    echo "<script>alert('Error: Invalid phone number format.D'); history.back();</script>";
     exit();
 }
 
@@ -69,7 +63,7 @@ if ($emp_nric === "") {
     // Allow empty phone number, set it to NULL
     $emp_nric = null;
 } elseif (!ctype_digit($emp_nric)) {
-    echo "<script>alert('Error: Invalid IC number format.'); history.back();</script>";
+    echo "<script>alert('Error: Invalid IC number format.E'); history.back();</script>";
     exit();
 }
 

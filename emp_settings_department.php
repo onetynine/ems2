@@ -1,5 +1,11 @@
   <?php
-  require 'conn.php';
+
+session_start();
+
+require 'conn.php';
+
+  if (isset($_SESSION['admin'])) {
+    if($_SESSION['admin'] == true){
 
 
   // Directly query the database for user information
@@ -254,3 +260,10 @@
               });
   });
   </script>
+<?php
+    } else {
+        include "blocked.php"; // Action if admin is false
+    }
+} else {
+    include "logout.php"; // If no session
+}

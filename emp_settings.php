@@ -1,8 +1,11 @@
 <?php
 session_start();
 require 'conn.php';
-include "header.php"; 
 
+if (isset($_SESSION['admin'])) {
+  if($_SESSION['admin'] == true){
+
+include "header.php"; 
 
 $sqlRequiredFields = "SELECT * FROM required_fields";
 $stmtRequiredFields = $pdo->prepare($sqlRequiredFields);
@@ -200,3 +203,10 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
 
 
 </main>
+<?php
+    } else {
+        include "blocked.php"; // Action if admin is false
+    }
+} else {
+    include "logout.php"; // If no session
+}

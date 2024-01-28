@@ -10,12 +10,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // ... (similar validation for other fields)
 
     // Check for duplicate email
-    $checkDuplicateContractTypeSql = "SELECT COUNT(*) FROM opt_contract_type WHERE opt_contract_type_name = :opt_contract_type_name";
-    $checkDuplicateContractTypeStmt = $pdo->prepare($checkDuplicateContractTypeSql);
-    $checkDuplicateContractTypeStmt->bindParam(':opt_contract_type_name', $opt_contract_type_name);
+    $checkDuplicateDeptNameSql = "SELECT COUNT(*) FROM opt_contract_type WHERE opt_contract_type_name = :opt_contract_type_name";
+    $checkDuplicateDeptNameStmt = $pdo->prepare($checkDuplicateDeptNameSql);
+    $checkDuplicateDeptNameStmt->bindParam(':opt_contract_type_name', $opt_contract_type_name);
 
-    if ($checkDuplicateContractTypeStmt->execute()) {
-        $duplicateCount = $checkDuplicateContractTypeStmt->fetchColumn();
+    if ($checkDuplicateDeptNameStmt->execute()) {
+        $duplicateCount = $checkDuplicateDeptNameStmt->fetchColumn();
 
         if ($duplicateCount > 0) {
         // Duplicate email found, output an error message
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // Error checking duplicate email
-        echo "<script>alert('Error checking duplicate email: " . $checkDuplicateContractTypeStmt->errorInfo()[2] . "'); history.back();</script>";
+        echo "<script>alert('Error checking duplicate email: " . $checkDuplicateEmailStmt->errorInfo()[2] . "'); history.back();</script>";
         exit();
     }
 
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
     // Your SQL query with named placeholders
-    $sql = "INSERT INTO opt_contract_type  
+    $sql = "INSERT INTO opt_contract_type 
     (opt_contract_type_name) 
     VALUES (:opt_contract_type_name)";
 

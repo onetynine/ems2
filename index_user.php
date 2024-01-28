@@ -20,7 +20,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="row no-gutters">
         <div class="col-md-8">
             <!-- Right side for other texts -->
-            <div class="card-body">
+            <div class="card-body" >
                 <h3 class="card-title">Hello User! </h3>
                 <h5 class="card-text">test</h5>
                 <p>Connect with me:</p>

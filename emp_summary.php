@@ -1,6 +1,11 @@
 <?php
-require 'session.php';
+session_start();
 require "conn.php";
+
+if (isset($_SESSION['admin'])) {
+    if($_SESSION['admin'] == true){
+
+
 include "header.php";
 /** if admin show all
  * else show a page to block their access
@@ -167,5 +172,10 @@ $(document).ready(function() {
             });
 });
 </script>
-
- 
+<?php
+    } else {
+        include "blocked.php"; // Action if admin is false
+    }
+} else {
+    include "logout.php"; // If no session
+}

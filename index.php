@@ -7,12 +7,12 @@ if (isset($_SESSION['admin'])) {
   if ($_SESSION['admin'] === true) {
       require "index_admin.php";
 
-  } else {
+  } elseif($_SESSION['admin'] === false) {
     require "index_user.php";
 
   }
 } else {
-  echo "admin session variable not set";
+  include "logout.php"; // If no session
 }
 
 
