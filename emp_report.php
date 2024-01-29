@@ -17,6 +17,10 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
        <?php include "header.php"; ?>
        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
+1. Employee by Department 
+2. Employee Count Growth (Current Year)
+3. Employee by Contract Type
+4. Custom (allow admin to create)
 
       <br>
     <h3>Employee</h3><hr>
