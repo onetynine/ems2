@@ -130,7 +130,29 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
       <div class="row d-flex align-items-start ">
         <div class="text-center m-4">
           <div class="card">  
-            <span class=" text-bg-primary">Active: 4</span><br><br>
+            <span class=" text-bg-primary">Active: 
+            <?php
+                // SQL query to count total rows in the table
+    $total_departments = "SELECT COUNT(*) AS totalRows FROM opt_department";
+    
+    // Prepare and execute the query
+    $stmt = $pdo->prepare($total_departments);
+    $stmt->execute();
+
+    // Fetch the result as an associative array
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalRows = $row["totalRows"];
+
+    if ($totalRows > 0) {
+        echo $totalRows;
+    } else {
+        echo "None";
+    }
+            
+
+            
+            ?>
+           </span><br><br>
           <i class="fa-solid fa-people-group fa-2xl"></i><br>
           <h5 class="text-body-emphasis m-2">Department</h5>
           <div class="m-2">
@@ -149,7 +171,28 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
       <div class="row d-flex align-items-start">
         <div class="text-center m-4">
           <div class="card">  
-            <span class="text-bg-primary">Active: 4</span><br><br>
+            <span class="text-bg-primary">Active: 
+            <?php
+                // SQL query to count total rows in the table
+    $total_contract_type = "SELECT COUNT(*) AS totalRows FROM opt_contract_type";
+    
+    // Prepare and execute the query
+    $stmt = $pdo->prepare($total_contract_type);
+    $stmt->execute();
+
+    // Fetch the result as an associative array
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalRows = $row["totalRows"];
+
+    if ($totalRows > 0) {
+        echo $totalRows;
+    } else {
+        echo "None";
+    }
+            
+
+            
+            ?></span><br><br>
           <i class="fa-solid fa-file-signature fa-2xl"></i><br>
           <h5 class="text-body-emphasis m-2">Contract Type</h5>
           <div class="m-2">
@@ -167,7 +210,29 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
       <div class="row d-flex align-items-start ">
         <div class="text-center m-4">
           <div class="card">  
-            <span class=" text-bg-primary">Active: 4</span><br><br>
+            <span class=" text-bg-primary">Active: 
+            <?php
+                // SQL query to count total rows in the table
+    $total_status = "SELECT COUNT(*) AS totalRows FROM opt_status";
+    
+    // Prepare and execute the query
+    $stmt = $pdo->prepare($total_status);
+    $stmt->execute();
+
+    // Fetch the result as an associative array
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalRows = $row["totalRows"];
+
+    if ($totalRows > 0) {
+        echo $totalRows;
+    } else {
+        echo "None";
+    }
+            
+
+            
+            ?>
+            </span><br><br>
           <i class="fa-solid fa-file-signature fa-2xl"></i><br>
           <h5 class="text-body-emphasis m-2">Status</h5>
           <div class="m-2">
