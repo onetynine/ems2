@@ -27,27 +27,38 @@ Create New Report
 
     <h4>Available Reports</h4><br>
     <div class="card mb-3 border-0" style="max-width: 100%;">
-<?php
-    foreach ($reports as $report): ?>
-               
 
-          
-  <div class="row g-0 ">
-    <div class="col-md-12">
-      <div class="card-body">
-        <h5 class="card-title"><?php echo $report["report_name"]; ?></h5>
-        <p class="card-text">Last Updated: <?php echo $report["created_at"]; ?>
-        <p class="card-text">
-         <a href=""><i class="fa fa-trash" id="delete"></i></a>
-        </p>
-      </div><hr>
-    </div>
-  </div>
-<?php endforeach; ?>
+    <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Report Name</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Report 1">
+</div>
+    <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Visualisation</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Line, Pie, Bar">
+</div>
+    <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Labels</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Label1,Label2,Label3">
+</div>
+    <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Labels</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Label1,Label2,Label3">
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Values</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Value1,Value2,Value3">
+</div>
+
+
+
+
+
+
+
+
 
 </div>
-    
-
 </main>
 </body>
 </html>
