@@ -26,24 +26,37 @@ Create New Report
 
 
     <h4>Available Reports</h4><br>
-    <div class="card mb-3 border-0" style="max-width: 100%;">
-<?php
-    foreach ($reports as $report): ?>
-               
 
-          
-  <div class="row g-0 ">
-    <div class="col-md-12">
-      <div class="card-body">
-        <h5 class="card-title"><?php echo $report["report_name"]; ?></h5>
-        <p class="card-text">Last Updated: <?php echo $report["created_at"]; ?>
-        <p class="card-text">
-         <a href=""><i class="fa fa-trash" id="delete"></i></a>
-        </p>
-      </div><hr>
-    </div>
-  </div>
-<?php endforeach; ?>
+    <div class="table mt-4">
+        <table id="info" class="table table-hover table-responsive" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Desc</th>
+                    <th>Created at</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>    
+<?php
+$counter = 1;
+    foreach ($reports as $report): ?>             
+               <tbody>
+                <tr>
+                    <td><?php echo $counter; ?></td>
+                    <td><?php echo $report["report_name"]; ?></td>
+                    <td><?php echo $report["additional_notes"]; ?></td>
+                    <td><?php echo $report["created_at"]; ?></td>
+                    <td><a href="emp_report_view.php?report_id=<?php echo $report["report_id"]; ?>"><i class="fa fa-pen"></i></a>
+                    <a href=""><i class="fa fa-pen"></i></a>
+                    <a href=""><i class="fa fa-pen"></i></a></td>
+                </tr>
+               
+<?php 
+ $counter++;
+endforeach; 
+?>
 
 </div>
     
@@ -52,179 +65,27 @@ Create New Report
 </body>
 </html>
 
-
-
 <script>
-   // Sample data (replace this with your PHP-generated data)
-   var data = {
-      labels: ["January", "February", "March", "April", "May", "June", "July",
-      "August", "September", "October", "November","December"],
-      datasets: [
-         {
-            label: "Headcount Growth",
-            data: [3,3,4,4,7,8,10,12,10,9,10,10,11,12],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-         },
-         {
-            label: "Target Headcount",
-            data: [3,4,5,6,7,8,8,9,9,10,10,11,11,12,12],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-         }
-      ]
-   };
-
-   // Get the canvas element and initialize the chart
-   var ctx = document.getElementById('myChart').getContext('2d');
-   var myChart = new Chart(ctx, {
-      type: 'line', // Change the chart type as needed (bar, line, pie, etc.)
-      data: data,
-      options: {
-         scales: {
-            y: {
-               beginAtZero: true
+$(document).ready(function() {
+    $('#info').DataTable({
+        dom: "<'row'<'col-sm-12 d-flex justify-content-between'Bf>>" + 
+             "<'row'<'col-sm-12'tr>>" +
+             "<'row'<'col-sm-4'l><'col-sm-8'pi>>",
+        scrollX: true,
+        responsive: true,
+        select: true,
+        buttons: [
+            {
+                text: 'Export as...',
+                extend: 'collection',
+                buttons: [
+                    'csv', 'excel', 'pdf' , 'print'
+                ]
             }
-         }
-      }
-   });
-
-    // Sample data 2 (replace this with your PHP-generated data)
-    var data = {
-      labels: ["January", "February", "March", "April", "May", "June", "July",
-      "August", "September", "October", "November","December"],
-      datasets: [
-         {
-            label: "Wage Spending",
-            data: [241000, 271000, 291000, 321000, 333000, 341021, 241000, 241000,
-                241000, 241000, 241000, 241000],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-         },
-         {
-            label: "Wage Budget",
-            data: [241000, 241000, 241000, 241000, 241000, 241000, 241000, 241000,
-                241000, 241000, 241000, 241000],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-         }
-      ]
-   };
-
-   // Get the canvas element and initialize the chart
-   var ctx = document.getElementById('myChart2').getContext('2d');
-   var myChart = new Chart(ctx, {
-      type: 'line', // Change the chart type as needed (bar, line, pie, etc.)
-      data: data,
-      options: {
-         scales: {
-            y: {
-               beginAtZero: true
-            },
-            x: {
-                beginAtZero: true
-            }
-         }
-      }
-   });
-
-    // Sample data 3 (replace this with your PHP-generated data)
-    var data = {
-      labels: ["January", "February", "March", "April", "May", "June", "July",
-      "August", "September", "October", "November","December"],
-      datasets: [
-         {
-            label: "Headcount Growth",
-            data: [3,3,4,4,7,8,10,12,10,9,10,10,11,12],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-         },
-         {
-            label: "Target Headcount",
-            data: [3,4,5,6,7,8,8,9,9,10,10,11,11,12,12],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-         }
-      ]
-   };
-
-   // Get the canvas element and initialize the chart
-   var ctx = document.getElementById('myChart3').getContext('2d');
-   var myChart = new Chart(ctx, {
-      type: 'line', // Change the chart type as needed (bar, line, pie, etc.)
-      data: data,
-      options: {
-         scales: {
-            y: {
-               beginAtZero: true
-            }
-         }
-      }
-   });
- 
- 
-
-
- 
+        ]
+       
+        
+            });
+});
 </script>
 
-<script>$(document).ready(function () {
-
-var navListItems = $('div.setup-panel div a'),
-        allWells = $('.setup-content'),
-        allNextBtn = $('.nextBtn'),
-        allPrevBtn = $('.prevBtn');
-
-allWells.hide();
-
-navListItems.click(function (e) {
-    e.preventDefault();
-    var $target = $($(this).attr('href')),
-            $item = $(this);
-
-    if (!$item.hasClass('disabled')) {
-        navListItems.removeClass('btn-primary').addClass('btn-default');
-        $item.addClass('btn-primary');
-        allWells.hide();
-        $target.show();
-        $target.find('input:eq(0)').focus();
-    }
-});
-
-allNextBtn.click(function(){
-    var curStep = $(this).closest(".setup-content"),
-        curStepBtn = curStep.attr("id"),
-        nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-        curInputs = curStep.find("input[type='text'],input[type='url']"),
-        isValid = true;
-
-    $(".form-group").removeClass("has-error");
-    for(var i=0; i<curInputs.length; i++){
-        if (!curInputs[i].validity.valid){
-            isValid = false;
-            $(curInputs[i]).closest(".form-group").addClass("has-error");
-        }
-    }
-
-    if (isValid)
-        nextStepWizard.removeAttr('disabled').trigger('click');
-});
-
-allPrevBtn.click(function(){
-    var curStep = $(this).closest(".setup-content"),
-        curStepBtn = curStep.attr("id"),
-        prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
-
-    $(".form-group").removeClass("has-error");
-    prevStepWizard.removeAttr('disabled').trigger('click');
-});
-
-$('div.setup-panel div a.btn-primary').trigger('click');
-});
-</script>
