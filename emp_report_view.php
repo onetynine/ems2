@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require "conn.php";
 
 if (isset($_GET['report_id'])) {
@@ -36,7 +36,9 @@ if (isset($_GET['report_id'])) {
        <?php include "header.php"; ?>
        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-
+       <?php
+var_dump($_SESSION['emp_name']);
+?>
       <br>
     <h3>Employee Profile</h3><hr>
     <div class="text-start">
@@ -109,6 +111,7 @@ if (isset($_GET['report_id'])) {
     } else {
         echo "Error decoding JSON data labels or datasets.";
     }
+
     ?>
 </div>
 

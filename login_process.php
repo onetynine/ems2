@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Compare passwords without hashing (for testing only)
         if ($emp_password === $user['emp_password']) {
             $_SESSION['emp_email'] = $user['emp_email'];
+            $_SESSION['emp_name'] = $user['emp_name'];
     
             // Check if the user has admin access
             if ($user['emp_admin_access'] == 1) {

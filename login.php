@@ -13,7 +13,6 @@ $user_password = "user123";
     <div class="row">
 <div class="col-md-4 card mx-auto" style="margin-top: 20vh;">
 
-  <img src="..." class="card-img-top" alt="...">
   <div class="card-body text-center">
     <h5 class="card-title">Log In</h5>
     <p class="card-text">Fill in your email address and password to login or use Admin or Employee link

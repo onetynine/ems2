@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require "conn.php";
 
 // Directly query the database for user infoation
@@ -26,39 +26,45 @@ Create New Report
 
 
     <h4>Available Reports</h4><br>
+    <form action="emp_report_process.php" method="post">
     <div class="card mb-3 border-0" style="max-width: 100%;">
+
+    
+<!-- Send timestamp and creator data as hidden -->
+  <input type="hidden" name="created_at" 
+  value="<?php
+         $timestamp = time();
+         $created_at = gmdate('Y-m-d H:i:s', $timestamp);
+         echo $created_at;
+         ?>" 
+  class="form-control">
+
+  <input type="hidden" name="created_by" 
+  value="<?php $_SESSION['emp_name'];?>"
+  class="form-control">
+
 
     <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Report Name</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Report 1">
+  <input required type="text" name="report_name" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Report 1">
 </div>
     <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Visualisation</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Line, Pie, Bar">
+  <input required type="text" name="report_type" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Line, Pie, Bar">
 </div>
     <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Labels</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Label1,Label2,Label3">
-</div>
-    <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Labels</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Label1,Label2,Label3">
+  <input type="text" name="data_labels" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Label1,Label2,Label3">
 </div>
 
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Values</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Value1,Value2,Value3">
+  <input type="text" name="datasets" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Value1,Value2,Value3">
 </div>
 
-
-
-
-
-
-
-
-
 </div>
+<button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+</form>
 </main>
 </body>
 </html>
