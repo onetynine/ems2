@@ -53,9 +53,11 @@ var_dump($_SESSION['emp_name']); ?>
   <input required type="text" name="report_type" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Line, Pie, Bar">
 </div>
     <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Labels</label>
-  <textarea type="text" name="data_labels" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Label1,Label2,Label3">
-  </textarea></div>
+  <label for="exampleFormControlInput1" class="form-label">Labels <i class="fa fa-info-circle" data-bs-toggle="tooltip" 
+  data-bs-title="Separate each label with a comma. Example: Label A, Label B, Label C"></i></label>
+  
+  <input rows="4" type="text" name="data_labels" class="form-control" id="exampleFormControlInput1" placeholder="e.g., Label 1, Label 2, Label 3">
+  </div>
 
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Values</label>
@@ -71,3 +73,7 @@ var_dump($_SESSION['emp_name']); ?>
 
 
 
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
