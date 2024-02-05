@@ -11,19 +11,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $datasets = isset($_POST["datasets"]) ? $_POST["datasets"] : null;
     $created_at = isset($_POST["created_at"]) ? $_POST["created_at"] : null;
 
+        // Explode the string into an array using the comma as a delimiter
+    $dataLabelsArray = explode(",", $data_labels);
 
+    // Trim each element to remove extra spaces
+    $dataLabelsArray = array_map('trim', $dataLabelsArray);
 
-// Remove spaces after commas for cleaner splitting
-$data_labels = str_replace(', ', ',', $data_labels);
+    // Convert the array to a JSON-encoded string
+    $jsonEncodedLabels = json_encode($dataLabelsArray);
 
-// Split the string into an array
-$data_labels = explode(',', $data_labels);
-
-// Trim whitespace from each element in the array
-$data_labels = array_map('trim', $data_labels);
-
-// Encode the array into JSON
-$jsonData = json_encode($data_labels);
+    $data_labels = $jsonEncodedLabels;
+    
 
 
     // Hash passwords if applicable
