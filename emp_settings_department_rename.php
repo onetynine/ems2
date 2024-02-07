@@ -34,9 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
     // Your SQL query with named placeholders
-    $sql = "INSERT INTO opt_department 
-    (opt_department_name) 
-    VALUES (:opt_department_name)";
+    $sql = "UPDATE opt_department SET 
+    opt_department_name = :opt_department_name, 
+
+WHERE opt_department_id = :opt_department_id";
 
     $stmt = $pdo->prepare($sql);
 

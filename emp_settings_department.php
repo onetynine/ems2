@@ -99,8 +99,12 @@ require 'conn.php';
         </div>
         <div class="modal-body">
           <form action="emp_settings_department_rename.php" id="rename-form" method="POST" class="needs-validation">
-        <div class="form-floating mb-3">
-        <input required type="text" class="form-control" id="rename-form2" placeholder="$" name="opt_department_name">
+          <div class="form-floating mb-3">
+                  <input required type="text" class="form-control" id="rename-form2" placeholder="$" name="opt_department_id">
+          <label for="floatingInput">Rename Department</label>
+        </div>
+          <div class="form-floating mb-3">
+                  <input required type="text" class="form-control" id="rename-form2" placeholder="$" name="opt_department_name">
           <label for="floatingInput">Rename Department</label>
         </div>
   </div>
