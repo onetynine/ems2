@@ -109,8 +109,8 @@ function setleaveId(leaveId) {
                 <a href="leave_view.php?leave_id=<?php echo $leave['leave_id']; ?>" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View">
                     <i class="bi bi-person-badge"></i><span class="visually-hidden"></span>
                 </a>
-                <a href="leave_view_edit.php?leave_id=<?php echo $leave['leave_id']; ?>" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                    <i class="bi bi-pencil"></i>     <span class="visually-hidden"></span>
+                <a href="leave_view_edit.php?leave_id=<?php echo $leave['leave_id']; ?>" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Change Status">
+                    <i class="bi bi-circle"></i>     <span class="visually-hidden"></span>
                     </a>
                     <a data-bs-toggle="modal" data-bs-target="#confirmdelete" class="btn btn-primary btn-sm" data-bs-placement="top" title="Delete" onclick="setleaveId(<?php echo $leave['leave_id']; ?>)">
                         <i class="bi bi-trash"></i>
