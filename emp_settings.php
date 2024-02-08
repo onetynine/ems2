@@ -27,12 +27,28 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
 }
 
 ?>
-  <br>     
-<h3>Settings</h3><hr>
-<p>Instead of hard-coding the options, we let the users to maintain it instead. So they do not have to 
-  check with vendor every time they need to set it up, or redo.
-</p>
 
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">Employee</li>
+    <li class="breadcrumb-item " aria-current="page"><a href="emp_settings.php">Settings</a></li>
+  </ol>
+</nav>
+<hr>    
+
+<div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-10">
+    <p class="h4"><u>Settings</u></p>
+    <p class="h6">This section allows for general employee management basic customisation. </p></div>
+  <!-- Button trigger modal -->
+  <div class="col-md-2">
+  <button type="button" class="btn btn-primary h-100 w-100"><i class="fa fa-plus"></i>
+    Jump Section
+  </button>
+  </div></div></div>
+  </div><br>
 
 <div class="card">
   <div class="card-body">

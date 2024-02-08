@@ -28,13 +28,32 @@ $reports = $stmt->fetchAll(PDO::FETCH_ASSOC);
       }
         ?>
 
-      <br>
-    <h3>Employee Report</h3><hr>
+<br>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">Employee</li>
+    <li class="breadcrumb-item " aria-current="page"><a href="emp_settings.php">Settings</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="emp_settings_department.php">Department</a></li>
+  </ol>
+</nav>
+<hr>
 
-<a class="btn btn-primary" href="emp_report_add.php">Create New Report</a>
+    <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-10">
+    <p class="h4"><u>Reporting</u></p>
+    <p class="h6">This section allows for department modification and standardization. </p></div>
+  <!-- Button trigger modal -->
+  <div class="col-md-2">
+  <button type="submit" onclick="window.location.href='emp_report_add.php'" class="btn btn-primary h-100 w-100">
+    <i class="fa fa-plus"></i> Create New Report
+  </button>
 
 
-    <h4>Available Reports</h4><br>
+  </div></div></div>
+  </div>
+
 <style>
     a{
         text-decoration: none;

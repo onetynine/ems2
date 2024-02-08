@@ -52,19 +52,28 @@ require 'conn.php';
 
     ?>
  
+  <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">Employee</li>
+    <li class="breadcrumb-item " aria-current="page"><a href="emp_settings.php">Settings</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="emp_settings_department.php">Department</a></li>
+  </ol>
+</nav>
+<hr>
 
-      
-  <h3>Settings</h3><hr>
-
-  <p class="h4">Department</p>
-
-  <br>
-
+    <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-10">
+    <p class="h4"><u>Department</u></p>
+    <p class="h6">This section allows for department modification and standardization. </p></div>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>
+  <div class="col-md-2">
+  <button type="button" class="btn btn-primary w-100 h-100" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>
     Add New Department
   </button>
-
+  </div></div></div>
+  </div>
   <!-- Modal for Add-->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -91,7 +100,7 @@ require 'conn.php';
 
   <!-- Modal for Rename-->
   <div class="modal fade" id="confirmrename" tabindex="-1" aria-labelledby="confirmrename" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="confirmrename">Rename New Department</h1>
@@ -107,7 +116,7 @@ require 'conn.php';
   </div>
   <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>Rename Department</button>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-pen"></i> Rename Department</button>
         </div>
       </div>
     </div>
