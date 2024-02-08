@@ -1,13 +1,21 @@
 <?php
+session_start();
 require 'conn.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $opt_department_name = isset($_POST["opt_department_name"]) ? 1 : 0;
 
-    // Validate and sanitize user input
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     // Retrieve and validate other fields
     $opt_department_name = filter_input(INPUT_POST, "opt_department_name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     // ... (similar validation for other fields)
+     // Retrieve department ID
+     $opt_department_id = filter_input(INPUT_POST, "opt_department_id", FILTER_VALIDATE_INT);
+     if ($opt_department_id === false) {
+         // Handle invalid department ID
+         echo '<script>alert("Invalid department ID."); history.back();</script>';
+         exit();
+     }
+
 
     // Check for duplicate email
     $checkDuplicateDeptNameSql = "SELECT COUNT(*) FROM opt_department WHERE opt_department_name = :opt_department_name";
@@ -30,20 +38,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Hash passwords if applicable
-    // $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-
     // Your SQL query with named placeholders
     $sql = "UPDATE opt_department SET 
-    opt_department_name = :opt_department_name, 
-
-WHERE opt_department_id = :opt_department_id";
+    opt_department_name = :opt_department_name 
+    WHERE opt_department_id = :opt_department_id";
 
     $stmt = $pdo->prepare($sql);
 
     if ($stmt) {
         // Bind parameters and execute the statement
         $stmt->bindParam(':opt_department_name', $opt_department_name);
+        $stmt->bindParam(':opt_department_id', $opt_department_id);
         
                 // Execute the update query
         if ($stmt->execute()) {

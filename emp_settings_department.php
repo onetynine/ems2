@@ -100,11 +100,8 @@ require 'conn.php';
         <div class="modal-body">
           <form action="emp_settings_department_rename.php" id="rename-form" method="POST" class="needs-validation">
           <div class="form-floating mb-3">
-                  <input required type="text" class="form-control" id="rename-form2" placeholder="$" name="opt_department_id">
-          <label for="floatingInput">Rename Department</label>
-        </div>
-          <div class="form-floating mb-3">
-                  <input required type="text" class="form-control" id="rename-form2" placeholder="$" name="opt_department_name">
+                    <input type="hidden" class="form-control" id="deptId" placeholder="$" name="opt_department_id">
+                  <input required type="text" class="form-control" id="deptName" placeholder="$" name="opt_department_name">
           <label for="floatingInput">Rename Department</label>
         </div>
   </div>
@@ -151,8 +148,10 @@ require 'conn.php';
     renameForm.action = 'emp_settings_department_rename.php?opt_department_id=' + opt_department_id;
 
     // Set the value of the input field with id 'floatingInput'
-    var inputField = renameForm.querySelector('#rename-form2');
-    inputField.value = opt_department_name;
+    var deptId = renameForm.querySelector('#deptId');
+    var deptName = renameForm.querySelector('#deptName');
+    deptId.value = opt_department_id;
+    deptName.value = opt_department_name;
 
     // Output the ID, you can choose to output it wherever you need
     console.log('Selected Department ID:', opt_department_id);
