@@ -31,8 +31,8 @@ $leaves = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form id="delete-form" action="leave_profile_delete.php" method="post">
-    <div class="card-body">Are you sure to remove this user permanently?</div>
+      <form id="delete-form" action="leave_delete.php" method="post">
+    <div class="card-body">Are you sure to remove this leave permanently?</div>
 </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -46,7 +46,7 @@ $leaves = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <script>
 function setleaveId(leaveId) {
-    document.getElementById('delete-form').action = 'leave_profile_delete.php?leave_id=' + leaveId;
+    document.getElementById('delete-form').action = 'leave_delete.php?leave_id=' + leaveId;
 }
 </script>
 
@@ -69,14 +69,27 @@ function setleaveId(leaveId) {
       }
     
       ?>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">Leave</li>
+    <li class="breadcrumb-item " aria-current="page"><a href="emp_settings.php">Dashboard</a></li>
+  </ol>
+</nav>
+<hr>   
+<div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-10">
+    <p class="h4"><u>Leave Dashboard</u></p>
+    <p class="h6">Leave information for all employees.</p></div>
+  <!-- Button trigger modal -->
+  <div class="col-md-2">
+  <button type="button" class="btn btn-primary h-100 w-100"><i class="fa fa-plus"></i>
+    Add New Leave
+  </button>
+  </div></div></div>
+  </div><br>
 
-      <br>
-    <h3>Leave</h3><hr>
-    <div class="text-start">
-            <h5>View Mode: Summary / <a href="leave_detail.php">Detailed</a> </h5>
-            <span> Displays leaveloyee information in table form. Search, filter and edit individually.</span>
-            <br>
-        </div>
     <div class="table mt-4">
         <table id="info" class="table table-hover table-responsive" style="width: 100%">
             <thead>

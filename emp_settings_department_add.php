@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Execute the update query
         if ($stmt->execute()) {
             // If the update is successful, redirect and display a success message
-            header("Location: emp_settings_department.php?success=true");
+            header("Location: emp_settings_department.php?add=true");
             exit();
         } else {
             // If all else fails, return to the shore

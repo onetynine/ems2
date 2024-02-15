@@ -13,10 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->rowCount() > 0) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
     
-        // Compare passwords without hashing (for testing only)
+        // If password correct, set some session variables
         if ($emp_password === $user['emp_password']) {
             $_SESSION['emp_email'] = $user['emp_email'];
             $_SESSION['emp_name'] = $user['emp_name'];
+            $_SESSION['emp_id'] = $user['emp_id'];
+
+            
     
             // Check if the user has admin access
             if ($user['emp_admin_access'] == 1) {

@@ -29,6 +29,14 @@ require 'conn.php';
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">  <br> 
   <?php
   // 
+
+  if (isset($_GET['add']) && $_GET['add'] == 'true') {
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            New department has been added successfully.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+  }
+
   if (isset($_GET['delete']) && $_GET['delete'] == 'true') {
       echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
               Your selected department has been deleted.

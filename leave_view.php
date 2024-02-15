@@ -64,6 +64,9 @@ if (isset($_GET['leave_id'])) {
 
 <a type="button" class="btn btn-primary">Change Status</a>
 <a type="button" class="btn btn-primary">Edit</a>
+<a 
+href="leave_delete.php?leave_id=<?php echo $user['leave_id'];?>"
+type="button" class="btn btn-primary">Delete</a>
 <a type="button" class="btn btn-primary">Leave History</a>
     </div>
     </div></div>
